@@ -1,0 +1,47 @@
+﻿Add features to the simple OOP support ticket application we developed in class. You should add the following features and some extra features of your own design.
+•Add a SQL Server database to store tickets. What information do you need to store for a support ticket?
+
+
+•You should be able to save resolved tickets to the database. Will you use the same table, or a separate one?
+use seperate dialog to resolve tickets 
+
+•You should be able to prioritize tickets - by rating tickets by severity of the problem 
+
+•You will need to manage a list of technicians who will work on tickets - again, store persistently in a database
+seperate dialog window for technicians
+
+•You should be able to assign tickets to a certain technician - create a window to assign tickets to a certain technician
+
+•You should be able to email a work list to a technician - click of a button to open a seperate dialog window 
+
+•You should be able to resolve a ticket, email the person who opened the ticket, and save it to the resolved list 
+
+•Help or documentation to help a user with the application  - use an about window or help window to help the user figure out how to use the app
+
+•You should add some extra features of your own design - confirm your extra features with me before you begin coding. - think of some extra features.
+
+__________________________________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+Your code should be designed in a modular, object oriented way.
+
+You should validate input, parameterize SQL queries, handle SQL errors and other errors. 
+
+You should test your application thoroughly.
+
+Comment your code.
+
+
+
+
+
+To submit:
+•Zip your project and upload to the final project dropbox by the given due date
+•AND push your code to your GitHub account, by the given due date. Send me a link to your GitHub repository. 
+
+You will present your application in class on May 12th.
+
+Your code is due Midnight May 12th, please zip your project and upload to the Final Project dropbox. Include a link to the GitHub repository.
