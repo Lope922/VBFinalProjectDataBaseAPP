@@ -29,8 +29,13 @@ Partial Class Form1
         Me.emailTech = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.helpButton = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.programhelpButton = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'createTicketButton
@@ -53,7 +58,7 @@ Partial Class Form1
         '
         'viewOpenTickets
         '
-        Me.viewOpenTickets.Location = New System.Drawing.Point(12, 93)
+        Me.viewOpenTickets.Location = New System.Drawing.Point(12, 209)
         Me.viewOpenTickets.Name = "viewOpenTickets"
         Me.viewOpenTickets.Size = New System.Drawing.Size(148, 23)
         Me.viewOpenTickets.TabIndex = 2
@@ -86,30 +91,77 @@ Partial Class Form1
         Me.StatusStrip1.TabIndex = 5
         Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'helpButton
+        'programhelpButton
         '
-        Me.helpButton.Location = New System.Drawing.Point(631, 416)
-        Me.helpButton.Name = "helpButton"
-        Me.helpButton.Size = New System.Drawing.Size(75, 23)
-        Me.helpButton.TabIndex = 6
-        Me.helpButton.Text = "Help"
-        Me.helpButton.UseVisualStyleBackColor = True
+        Me.programhelpButton.Location = New System.Drawing.Point(601, 483)
+        Me.programhelpButton.Name = "programhelpButton"
+        Me.programhelpButton.Size = New System.Drawing.Size(146, 23)
+        Me.programhelpButton.TabIndex = 6
+        Me.programhelpButton.Text = "Program How To..."
+        Me.programhelpButton.UseVisualStyleBackColor = True
         '
-        'ComboBox1
+        'Button1
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(39, 210)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 7
+        Me.Button1.Location = New System.Drawing.Point(609, 491)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(254, 142)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.TabIndex = 8
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(254, 212)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox2.TabIndex = 9
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(242, 109)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(63, 13)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "User Name "
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(251, 182)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(53, 13)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "Password"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(279, 257)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 12
+        Me.Button2.Text = "Login"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(817, 531)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.helpButton)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.programhelpButton)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.emailTech)
         Me.Controls.Add(Me.addTechButton)
@@ -129,7 +181,12 @@ Partial Class Form1
     Friend WithEvents emailTech As System.Windows.Forms.Button
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents helpButton As System.Windows.Forms.Button
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents programhelpButton As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 
 End Class

@@ -22,10 +22,6 @@ seperate dialog window for technicians
 
 __________________________________________________________________________________________________________________________________________________________________________
 
-
-
-
-
 Your code should be designed in a modular, object oriented way.
 
 You should validate input, parameterize SQL queries, handle SQL errors and other errors. 
@@ -33,15 +29,8 @@ You should validate input, parameterize SQL queries, handle SQL errors and other
 You should test your application thoroughly.
 
 Comment your code.
+__________________________________________________________________________________________________________________________________________________________________________
 
 
 
 
-
-To submit:
-•Zip your project and upload to the final project dropbox by the given due date
-•AND push your code to your GitHub account, by the given due date. Send me a link to your GitHub repository. 
-
-You will present your application in class on May 12th.
-
-Your code is due Midnight May 12th, please zip your project and upload to the Final Project dropbox. Include a link to the GitHub repository.
