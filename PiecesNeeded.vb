@@ -2,7 +2,7 @@
 
 Public Class PiecesNeeded
 
-    ''~~~~~~~~~~~~~~~~@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+    ''~~~~~~~~~~~~~~~~@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     'tech list table needs(tech name as string , tech email as string, techid , number of tickets, resolved tickets, callbacks, ints ints ints
     Private Structure TechObj
 
@@ -53,7 +53,6 @@ Public Class PiecesNeeded
 
     Public Property retrieveProblemSeverity As Integer
         Get
-            severity()
             Return severity
         End Get
         Set(value As Integer)
