@@ -68,6 +68,61 @@ Public Class PiecesNeeded
             value = dateIn
         End Set
     End Property
+
+ 
+    Public Structure Tech ' the structure/form the tech object needs to take. With pieces it needs. 
+
+        Private username_fromLogin As String ' this will be the login set when user logs in, and will also be a tag when sending e-mails as well as other forms. 
+
+        Public Property Username() As String ' this will call a function that gets and sets the value of the function. 
+            Get
+                Return username_fromLogin ' set to the instance of the user login when initializing. 
+
+            End Get
+
+            Set(value As String)
+
+                username_fromLogin = value
+
+            End Set
+
+        End Property
+
+        '' test this out to see if i can get just tech name to show up in the combo drop down box. 
+
+        ' tech id also needs e-mail address to be sent in e-mails. 
+        'may only need to be written as an overloaded sub. 
+
+        'leaving off here.  <~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        '' this sniippet is from the coffee shop program. 
+
+        Private _email As String
+        Public Property Email() As String
+            Get
+                Return _email
+            End Get
+            Set(ByVal value As String)
+                _email = value
+            End Set
+        End Property
+
+        Private _id As Integer
+        Public Property Id() As Integer
+            Get
+                Return _id
+            End Get
+            Set(ByVal value As Integer)
+                _id = value
+            End Set
+        End Property
+
+        '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    End Structure
+
+
+
     '' an experimental function to get the date 
     'Private Function getDate() As String
     '    Dim dateOfCallin As Date
