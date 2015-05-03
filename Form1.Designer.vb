@@ -37,6 +37,9 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.testPanel1 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.openTicketsDataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.testPanel1.SuspendLayout()
+        CType(Me.openTicketsDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'createTicketButton
@@ -86,9 +89,10 @@ Partial Class Form1
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 509)
+        Me.StatusStrip1.BackColor = System.Drawing.Color.Gray
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 365)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(817, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(634, 22)
         Me.StatusStrip1.TabIndex = 5
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -153,6 +157,7 @@ Partial Class Form1
         'testPanel1
         '
         Me.testPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.testPanel1.Controls.Add(Me.openTicketsDataGridView1)
         Me.testPanel1.ForeColor = System.Drawing.Color.White
         Me.testPanel1.Location = New System.Drawing.Point(426, 44)
         Me.testPanel1.Name = "testPanel1"
@@ -167,12 +172,20 @@ Partial Class Form1
         Me.Panel1.Size = New System.Drawing.Size(686, 13)
         Me.Panel1.TabIndex = 0
         '
+        'openTicketsDataGridView1
+        '
+        Me.openTicketsDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.openTicketsDataGridView1.Location = New System.Drawing.Point(12, 3)
+        Me.openTicketsDataGridView1.Name = "openTicketsDataGridView1"
+        Me.openTicketsDataGridView1.Size = New System.Drawing.Size(160, 253)
+        Me.openTicketsDataGridView1.TabIndex = 0
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(817, 531)
+        Me.ClientSize = New System.Drawing.Size(634, 387)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.testPanel1)
         Me.Controls.Add(Me.Button2)
@@ -190,6 +203,8 @@ Partial Class Form1
         Me.ForeColor = System.Drawing.Color.Black
         Me.Name = "Form1"
         Me.Text = "Ticket Manager App"
+        Me.testPanel1.ResumeLayout(False)
+        CType(Me.openTicketsDataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -209,5 +224,6 @@ Partial Class Form1
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents testPanel1 As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents openTicketsDataGridView1 As System.Windows.Forms.DataGridView
 
 End Class
