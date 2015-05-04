@@ -1,5 +1,11 @@
 ﻿Imports System.Data.SqlClient
 Public Class Form1
+    'THESE Are PUBLIC MOVE TO THE TOP  
+    Dim testobjAdapter As SqlDataAdapter
+    ' Dim main_menu_test_Data_Grid_1st_queary As DataTable()
+    Dim allDataFromTableDataAdapter As SqlDataAdapter
+    Dim addDataFromTableDataTable As DataTable
+
 
     Private Sub helpButton_Click(sender As Object, e As EventArgs) Handles programhelpButton.Click
         ' open a dialog window to show the user how to use the main menu and program.
@@ -35,10 +41,7 @@ Public Class Form1
 
     ''CONSIDER THE PRACTICALITY OF HAVING A USER LOGIN , SO WHO CREATES THE ISSUE TICKET CAN BE RECORDED. 
 
-    'THESE Are PUBLIC MOVE TO THE TOP  
-    Dim testobjAdapter As SqlDataAdapter
-    Dim main_menu_test_Data_Grid_1st_queary As DataTable()
-
+    
 
     Private Sub viewOpenTickets_Click(sender As Object, e As EventArgs) Handles viewOpenTickets.Click
         'create a connection to the database and make a sql queary for the table of open tickets. 
@@ -49,16 +52,28 @@ Public Class Form1
         ' just created a talbe that has open tickets that stores : TECH ID AS STRING, PROBLEM TICKET AS INT, DESCRIPTION AS STRING, DATE CALLED IN AS DATE, LOCATION AS STRING. 
 
         ' dim select all Sql string that will make the request 
-        Dim selectAllSQL As String = "SELECT * FROM Open Tickets"
+        Dim selectAllSQL As String = "SELECT * FROM OpenTickets"
 
-        testobjAdapter = New SqlDataAdapter(selectAllSQL, sqlConnectionSTring)
+        'testobjAdapter = New SqlDataAdapter(selectAllSQL, sqlConnectionSTring)
 
-        ' main_menu_test_Data_Grid_1st_queary = New DataTable()
+        'testobjAdapter = New DataTable()
         'testobjAdapter.Fill(main_menu_test_Data_Grid_1st_queary)
 
-        openTicketsDataGridView1.DataSource = main_menu_test_Data_Grid_1st_queary
+        'openTicketsDataGridView1.DataSource = main_menu_test_Data_Grid_1st_queary
         ' now fill a grid box with the data. 
+        allDataFromTableDataAdapter = New SqlDataAdapter(selectAllSQL, sqlConnectionSTring)
 
+
+        '' EXACTLY WHAT I WANT TO DO RIGHT HERE./
+        addDataFromTableDataTable = New DataTable()
+        ' THIS FILLS THE DATA GRID. 
+        allDataFromTableDataAdapter.Fill(addDataFromTableDataTable)
+        '' THIS SAYS THE DATA GRID SOURCE IS THE DATA GRID ITSELF. 
+        openTicketsDataGridView1.DataSource = addDataFromTableDataTable
+
+    End Sub
+
+    Private Sub testPanel1_Paint(sender As Object, e As PaintEventArgs) Handles testPanel1.Paint
 
     End Sub
 End Class

@@ -36,8 +36,8 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.testPanel1 = New System.Windows.Forms.Panel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.openTicketsDataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.testPanel1.SuspendLayout()
         CType(Me.openTicketsDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -92,7 +92,7 @@ Partial Class Form1
         Me.StatusStrip1.BackColor = System.Drawing.Color.Gray
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 365)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(634, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(922, 22)
         Me.StatusStrip1.TabIndex = 5
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -161,8 +161,17 @@ Partial Class Form1
         Me.testPanel1.ForeColor = System.Drawing.Color.White
         Me.testPanel1.Location = New System.Drawing.Point(426, 44)
         Me.testPanel1.Name = "testPanel1"
-        Me.testPanel1.Size = New System.Drawing.Size(185, 268)
+        Me.testPanel1.Size = New System.Drawing.Size(530, 268)
         Me.testPanel1.TabIndex = 13
+        '
+        'openTicketsDataGridView1
+        '
+        Me.openTicketsDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.openTicketsDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.openTicketsDataGridView1.Location = New System.Drawing.Point(12, 3)
+        Me.openTicketsDataGridView1.Name = "openTicketsDataGridView1"
+        Me.openTicketsDataGridView1.Size = New System.Drawing.Size(381, 253)
+        Me.openTicketsDataGridView1.TabIndex = 0
         '
         'Panel1
         '
@@ -172,20 +181,12 @@ Partial Class Form1
         Me.Panel1.Size = New System.Drawing.Size(686, 13)
         Me.Panel1.TabIndex = 0
         '
-        'openTicketsDataGridView1
-        '
-        Me.openTicketsDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.openTicketsDataGridView1.Location = New System.Drawing.Point(12, 3)
-        Me.openTicketsDataGridView1.Name = "openTicketsDataGridView1"
-        Me.openTicketsDataGridView1.Size = New System.Drawing.Size(160, 253)
-        Me.openTicketsDataGridView1.TabIndex = 0
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(634, 387)
+        Me.ClientSize = New System.Drawing.Size(922, 387)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.testPanel1)
         Me.Controls.Add(Me.Button2)
