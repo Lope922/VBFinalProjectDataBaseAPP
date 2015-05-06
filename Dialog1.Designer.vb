@@ -27,18 +27,18 @@ Partial Class Dialog1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.locationComboBox = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.problemDescriptionTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.assignedTechcomboBox = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.createTicketDataGridView = New System.Windows.Forms.DataGridView()
         Me.close_ProblemTicketWindow = New System.Windows.Forms.Button()
         Me.addProblemTicket = New System.Windows.Forms.Button()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.severityNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.testRichTextBox = New System.Windows.Forms.RichTextBox()
+        Me.dateLabel = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.createTicketDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.severityNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -48,20 +48,21 @@ Partial Class Dialog1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(558, 340)
+        Me.TableLayoutPanel1.Controls.Add(Me.addProblemTicket, 0, 0)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(350, 323)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(146, 29)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(259, 29)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'Cancel_Button
         '
         Me.Cancel_Button.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel_Button.Location = New System.Drawing.Point(76, 3)
+        Me.Cancel_Button.Location = New System.Drawing.Point(145, 3)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(67, 23)
+        Me.Cancel_Button.Size = New System.Drawing.Size(97, 23)
         Me.Cancel_Button.TabIndex = 1
         Me.Cancel_Button.Text = "Cancel"
         '
@@ -90,14 +91,6 @@ Partial Class Dialog1
         Me.Label3.Size = New System.Drawing.Size(101, 13)
         Me.Label3.TabIndex = 41
         Me.Label3.Text = "Problem Description"
-        '
-        'problemDescriptionTextBox
-        '
-        Me.problemDescriptionTextBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.problemDescriptionTextBox.Location = New System.Drawing.Point(51, 267)
-        Me.problemDescriptionTextBox.Name = "problemDescriptionTextBox"
-        Me.problemDescriptionTextBox.Size = New System.Drawing.Size(293, 20)
-        Me.problemDescriptionTextBox.TabIndex = 40
         '
         'Label2
         '
@@ -135,7 +128,7 @@ Partial Class Dialog1
         '
         'close_ProblemTicketWindow
         '
-        Me.close_ProblemTicketWindow.Location = New System.Drawing.Point(567, 251)
+        Me.close_ProblemTicketWindow.Location = New System.Drawing.Point(615, 326)
         Me.close_ProblemTicketWindow.Name = "close_ProblemTicketWindow"
         Me.close_ProblemTicketWindow.Size = New System.Drawing.Size(75, 23)
         Me.close_ProblemTicketWindow.TabIndex = 34
@@ -144,29 +137,38 @@ Partial Class Dialog1
         '
         'addProblemTicket
         '
-        Me.addProblemTicket.Location = New System.Drawing.Point(442, 251)
+        Me.addProblemTicket.Location = New System.Drawing.Point(3, 3)
         Me.addProblemTicket.Name = "addProblemTicket"
-        Me.addProblemTicket.Size = New System.Drawing.Size(119, 23)
+        Me.addProblemTicket.Size = New System.Drawing.Size(121, 23)
         Me.addProblemTicket.TabIndex = 33
         Me.addProblemTicket.Text = "Add Problem Ticket"
         Me.addProblemTicket.UseVisualStyleBackColor = True
         '
-        'NumericUpDown1
+        'severityNumericUpDown
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(147, 57)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(36, 20)
-        Me.NumericUpDown1.TabIndex = 44
-        Me.NumericUpDown1.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
+        Me.severityNumericUpDown.Location = New System.Drawing.Point(147, 57)
+        Me.severityNumericUpDown.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
+        Me.severityNumericUpDown.Name = "severityNumericUpDown"
+        Me.severityNumericUpDown.Size = New System.Drawing.Size(36, 20)
+        Me.severityNumericUpDown.TabIndex = 44
+        Me.severityNumericUpDown.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
         '
         'testRichTextBox
         '
-        Me.testRichTextBox.Location = New System.Drawing.Point(51, 299)
+        Me.testRichTextBox.Location = New System.Drawing.Point(51, 267)
         Me.testRichTextBox.Name = "testRichTextBox"
-        Me.testRichTextBox.Size = New System.Drawing.Size(293, 70)
+        Me.testRichTextBox.Size = New System.Drawing.Size(293, 99)
         Me.testRichTextBox.TabIndex = 45
         Me.testRichTextBox.Text = "Rich text box. Try me out. "
+        '
+        'dateLabel
+        '
+        Me.dateLabel.AutoSize = True
+        Me.dateLabel.Location = New System.Drawing.Point(39, 24)
+        Me.dateLabel.Name = "dateLabel"
+        Me.dateLabel.Size = New System.Drawing.Size(79, 13)
+        Me.dateLabel.TabIndex = 46
+        Me.dateLabel.Text = "Today's Date : "
         '
         'Dialog1
         '
@@ -174,18 +176,17 @@ Partial Class Dialog1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(716, 381)
+        Me.Controls.Add(Me.dateLabel)
         Me.Controls.Add(Me.testRichTextBox)
-        Me.Controls.Add(Me.NumericUpDown1)
+        Me.Controls.Add(Me.severityNumericUpDown)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.locationComboBox)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.problemDescriptionTextBox)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.assignedTechcomboBox)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.createTicketDataGridView)
         Me.Controls.Add(Me.close_ProblemTicketWindow)
-        Me.Controls.Add(Me.addProblemTicket)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -196,7 +197,7 @@ Partial Class Dialog1
         Me.Text = "Dialog1"
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.createTicketDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.severityNumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -206,14 +207,14 @@ Partial Class Dialog1
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents locationComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents problemDescriptionTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents assignedTechcomboBox As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents createTicketDataGridView As System.Windows.Forms.DataGridView
     Friend WithEvents close_ProblemTicketWindow As System.Windows.Forms.Button
     Friend WithEvents addProblemTicket As System.Windows.Forms.Button
-    Friend WithEvents NumericUpDown1 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents severityNumericUpDown As System.Windows.Forms.NumericUpDown
     Friend WithEvents testRichTextBox As System.Windows.Forms.RichTextBox
+    Friend WithEvents dateLabel As System.Windows.Forms.Label
 
 End Class

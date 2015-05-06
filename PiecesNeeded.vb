@@ -23,8 +23,9 @@ Public Class PiecesNeeded
         '' see coffee demo and compare this to another object and see if i am using structure right. 
     End Structure
 
-
-
+    '' test is just for testing purposes to send a new ticket to the database
+    Sub New(techID As String, datin As Date, location As String, description As String)
+    End Sub
     '' this is a big class that holds all the pieces needed at the moment will split as necessary, just need to get underway modularizing the program. 
 
     '' in this problem ticket for i will need to be able to create a problem ticket
@@ -69,7 +70,7 @@ Public Class PiecesNeeded
         End Set
     End Property
 
- 
+
     Public Structure Tech ' the structure/form the tech object needs to take. With pieces it needs. 
 
         Private username_fromLogin As String ' this will be the login set when user logs in, and will also be a tag when sending e-mails as well as other forms. 
