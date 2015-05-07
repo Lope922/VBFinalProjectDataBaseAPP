@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 
 'Imports System.Data.SqlClient
 
-Public Class Dialog1
+Public Class CreateTicket
     ' this will be used when creating a ticket it will be auto applied. 
 
 
@@ -29,8 +29,11 @@ Public Class Dialog1
         locationComboBox.Items.Add("Front End")
         locationComboBox.Items.Add("Back End")
         locationComboBox.Items.Add("Warehouse")
-        Dim dateIn As Date = Now.ToShortDateString("MM.dd.yy")
-        dateLabel = dateIn
+
+        '' figure how to automatically get the date in this formate listed below 
+
+        Dim dateIn As Date = Today
+        dateLabel.Text = ("Current Date:" + dateIn.ToString)
 
         ' request the techs available from the database. 
         ' if database is empty display a message letting the user know that they need to add Techs to the database. 
@@ -39,9 +42,9 @@ Public Class Dialog1
     Dim objTableDataAdapter As SqlDataAdapter
 
 
-   
+
     Dim objTechNamesDataTable As New DataTable()
-   
+
     Dim DB_connection_string As String = "server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;user id=sa;password=paSSw0rd29"
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -66,18 +69,52 @@ Public Class Dialog1
 
 
     End Sub
+    'PART oF TESTING
+    Dim createTicketData As New SqlDataAdapter
+
+
+
     ' this is for testing out the class object. 
     Dim testMe As PiecesNeeded
     Private Sub addProblemTicket_Click(sender As Object, e As EventArgs) Handles addProblemTicket.Click
         ' when this button is clicked set the values needed to equal to the user input 
+        Try
 
-        Dim techtoAssignTask As String = assignedTechcomboBox.SelectedText
-        ' here is the assigned tech 
-        Dim problemSeverity As Integer = CInt(severityNumericUpDown.Value)
-        ' here is the severity 
+            Dim techtoAssignTask As String = assignedTechcomboBox.SelectedText
+            ' here is the assigned tech 
 
-        'create a lable to show today's date. That will be helpful. 
+            Dim problemSeverity As Integer = CInt(severityNumericUpDown.Value)
+            ' here is the severity 
 
-        ' what is required for a problem ticket ? Tech id , problem ticket #, problem description, date called in, location and severity. 
+            Dim problemDescription As String = createTicket_RichTextBox.Text
+            ' the problem description 
+
+            Dim dateCalledIn As Date = Today
+
+            ''TODO TEST THIS STRING TO MAKE SURE IT IS ADDING DATA AS I THINK IT IS. 
+            Dim sqlCreateTicketCommand As String = "INSERT into [Open Tickets] @Techname , @ datein , @ description, @severity, @Problem Ticket Numer"
+            'tech id , problem ticket number, description, date called in, location of problem, severity
+
+
+            Dim objConnection As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;user id=sa;password=paSSw0rd29") 'Change to your actual password!
+
+
+            'still need to initialize this to create establis the connection. this may needs to be delcared at the initialization of this class. 
+            createTicketData = New SqlDataAdapter(sqlCreateTicketCommand, objConnection)
+
+
+            'create a request to the database to send the above information 
+            'Dim createTicketConnection As SqlClient = (SqlCommand, sqlconnection)
+
+            'create a lable to show today's date. That will be helpful. 
+            'TODO AFTER THIS IS WORKING ALLOW USER TO SET DATE IN AND DATE RESOLVED. AS AN EXTRA FEATURE:
+
+        Catch similarErr As Exception
+            MessageBox.Show(similarErr.Message + vbNewLine + " I have experienced a similar error " + vbNewLine + " within the sqlcreateticketcommand. Checker the sql queries is setup corretly")
+        End Try
+
+
+        'LEFT OF REVIEWING COFFEE SHOP EXAMPLE SAVE BUTTON. 
+
     End Sub
 End Class

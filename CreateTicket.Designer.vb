@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Dialog1
+Partial Class CreateTicket
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,6 +24,7 @@ Partial Class Dialog1
     Private Sub InitializeComponent()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Cancel_Button = New System.Windows.Forms.Button()
+        Me.addProblemTicket = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.locationComboBox = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -32,9 +33,8 @@ Partial Class Dialog1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.createTicketDataGridView = New System.Windows.Forms.DataGridView()
         Me.close_ProblemTicketWindow = New System.Windows.Forms.Button()
-        Me.addProblemTicket = New System.Windows.Forms.Button()
         Me.severityNumericUpDown = New System.Windows.Forms.NumericUpDown()
-        Me.testRichTextBox = New System.Windows.Forms.RichTextBox()
+        Me.createTicket_RichTextBox = New System.Windows.Forms.RichTextBox()
         Me.dateLabel = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.createTicketDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,6 +65,15 @@ Partial Class Dialog1
         Me.Cancel_Button.Size = New System.Drawing.Size(97, 23)
         Me.Cancel_Button.TabIndex = 1
         Me.Cancel_Button.Text = "Cancel"
+        '
+        'addProblemTicket
+        '
+        Me.addProblemTicket.Location = New System.Drawing.Point(3, 3)
+        Me.addProblemTicket.Name = "addProblemTicket"
+        Me.addProblemTicket.Size = New System.Drawing.Size(121, 23)
+        Me.addProblemTicket.TabIndex = 33
+        Me.addProblemTicket.Text = "Add Problem Ticket"
+        Me.addProblemTicket.UseVisualStyleBackColor = True
         '
         'Label4
         '
@@ -135,15 +144,6 @@ Partial Class Dialog1
         Me.close_ProblemTicketWindow.Text = "Close "
         Me.close_ProblemTicketWindow.UseVisualStyleBackColor = True
         '
-        'addProblemTicket
-        '
-        Me.addProblemTicket.Location = New System.Drawing.Point(3, 3)
-        Me.addProblemTicket.Name = "addProblemTicket"
-        Me.addProblemTicket.Size = New System.Drawing.Size(121, 23)
-        Me.addProblemTicket.TabIndex = 33
-        Me.addProblemTicket.Text = "Add Problem Ticket"
-        Me.addProblemTicket.UseVisualStyleBackColor = True
-        '
         'severityNumericUpDown
         '
         Me.severityNumericUpDown.Location = New System.Drawing.Point(147, 57)
@@ -153,13 +153,13 @@ Partial Class Dialog1
         Me.severityNumericUpDown.TabIndex = 44
         Me.severityNumericUpDown.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
         '
-        'testRichTextBox
+        'createTicket_RichTextBox
         '
-        Me.testRichTextBox.Location = New System.Drawing.Point(51, 267)
-        Me.testRichTextBox.Name = "testRichTextBox"
-        Me.testRichTextBox.Size = New System.Drawing.Size(293, 99)
-        Me.testRichTextBox.TabIndex = 45
-        Me.testRichTextBox.Text = "Rich text box. Try me out. "
+        Me.createTicket_RichTextBox.Location = New System.Drawing.Point(51, 267)
+        Me.createTicket_RichTextBox.Name = "createTicket_RichTextBox"
+        Me.createTicket_RichTextBox.Size = New System.Drawing.Size(293, 99)
+        Me.createTicket_RichTextBox.TabIndex = 45
+        Me.createTicket_RichTextBox.Text = "Rich text box. Try me out. "
         '
         'dateLabel
         '
@@ -177,7 +177,7 @@ Partial Class Dialog1
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(716, 381)
         Me.Controls.Add(Me.dateLabel)
-        Me.Controls.Add(Me.testRichTextBox)
+        Me.Controls.Add(Me.createTicket_RichTextBox)
         Me.Controls.Add(Me.severityNumericUpDown)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.locationComboBox)
@@ -214,7 +214,7 @@ Partial Class Dialog1
     Friend WithEvents close_ProblemTicketWindow As System.Windows.Forms.Button
     Friend WithEvents addProblemTicket As System.Windows.Forms.Button
     Friend WithEvents severityNumericUpDown As System.Windows.Forms.NumericUpDown
-    Friend WithEvents testRichTextBox As System.Windows.Forms.RichTextBox
+    Friend WithEvents createTicket_RichTextBox As System.Windows.Forms.RichTextBox
     Friend WithEvents dateLabel As System.Windows.Forms.Label
 
 End Class

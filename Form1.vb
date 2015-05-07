@@ -18,7 +18,7 @@ Public Class Form1
         MessageBox.Show("Here comes the Dialog window ")
         Me.Hide()
 
-        Dialog1.ShowDialog()
+        CreateTicket.ShowDialog()
         ' createProblemTicket.Show()
 
         'Catch ex As Exception

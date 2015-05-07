@@ -12,4 +12,6 @@ Public Class CreateEmail
         Me.Close()
     End Sub
 
+    'TOMORROW THE TODO FOR THIS IS TO LOAD THE TEXT BOX AND POP UP WITH WINDOW TO SEE HOW TO SEND THE E=MAIL. 
+
 End Class

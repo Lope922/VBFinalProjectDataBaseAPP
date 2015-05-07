@@ -76,10 +76,10 @@
     <Compile Include="CreateEmail.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialog1.Designer.vb">
-      <DependentUpon>Dialog1.vb</DependentUpon>
+    <Compile Include="CreateTicket.Designer.vb">
+      <DependentUpon>CreateTicket.vb</DependentUpon>
     </Compile>
-    <Compile Include="Dialog1.vb">
+    <Compile Include="CreateTicket.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.vb">
@@ -110,8 +110,8 @@
     <EmbeddedResource Include="CreateEmail.resx">
       <DependentUpon>CreateEmail.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialog1.resx">
-      <DependentUpon>Dialog1.vb</DependentUpon>
+    <EmbeddedResource Include="CreateTicket.resx">
+      <DependentUpon>CreateTicket.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
