@@ -1,6 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Public Class Form1
-    'THESE Are PUBLIC MOVE TO THE TOP  
+
+    'think about the objects that will be used throughout the program and start to divide up pieces needed into classes. 
+
     Dim testobjAdapter As SqlDataAdapter
     ' Dim main_menu_test_Data_Grid_1st_queary As DataTable()
     Dim allDataFromTableDataAdapter As SqlDataAdapter
@@ -15,7 +17,7 @@ Public Class Form1
 
     Private Sub createTicketButton_Click(sender As Object, e As EventArgs) Handles createTicketButton.Click
         '   Try
-        MessageBox.Show("Here comes the Dialog window ")
+        'MessageBox.Show("Here comes the Dialog window ")
         Me.Hide()
 
         CreateTicket.ShowDialog()
@@ -47,12 +49,15 @@ Public Class Form1
         'create a connection to the database and make a sql queary for the table of open tickets. 
         ' select all information needed from the table and display it in the data grid view of the window that opens. 
 
+
+        ''TRYING TO FIX CONNECTION STRING... SET IT UP FOR LOCAL HOST AND WINDOWS TRUSTED CONNECTION. 
+
         ' queary connection string. 
-        Dim sqlConnectionSTring As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;user id=sa;password=paSSw0rd29")
+        Dim sqlConnectionSTring As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
         ' just created a talbe that has open tickets that stores : TECH ID AS STRING, PROBLEM TICKET AS INT, DESCRIPTION AS STRING, DATE CALLED IN AS DATE, LOCATION AS STRING. 
 
         ' dim select all Sql string that will make the request 
-        Dim selectAllSQL As String = "SELECT * FROM OpenTickets"
+        Dim selectAllSQL As String = "SELECT * FROM [OpenTickets]"
 
         'testobjAdapter = New SqlDataAdapter(selectAllSQL, sqlConnectionSTring)
 
@@ -70,10 +75,6 @@ Public Class Form1
         allDataFromTableDataAdapter.Fill(addDataFromTableDataTable)
         '' THIS SAYS THE DATA GRID SOURCE IS THE DATA GRID ITSELF. 
         openTicketsDataGridView1.DataSource = addDataFromTableDataTable
-
-    End Sub
-
-    Private Sub testPanel1_Paint(sender As Object, e As PaintEventArgs) Handles testPanel1.Paint
 
     End Sub
 End Class

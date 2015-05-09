@@ -4,6 +4,7 @@ Imports System.Data.SqlClient
 'Imports System.Data.SqlClient
 
 Public Class CreateTicket
+
     ' this will be used when creating a ticket it will be auto applied. 
 
 
@@ -13,8 +14,10 @@ Public Class CreateTicket
     End Sub
 
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
+        'when the cancel button is clicked go back to the main window. 
         Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Close()
+        Form1.Show()
     End Sub
 
     Private Sub Dialog1_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -45,7 +48,8 @@ Public Class CreateTicket
 
     Dim objTechNamesDataTable As New DataTable()
 
-    Dim DB_connection_string As String = "server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;user id=sa;password=paSSw0rd29"
+
+    Dim DB_connection_string As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'Fetch names of tables and display them in first combobox
@@ -62,6 +66,22 @@ Public Class CreateTicket
 
         assignedTechcomboBox.ValueMember = columnName
 
+        ' dim select all Sql string that will make the request 
+        Dim selectAllOpenTicketsSQL As String = "SELECT * FROM [OpenTickets]"
+        Dim allDataFromTableDataAdapter As SqlDataAdapter
+        Dim addDataFromTableDataTable As DataTable
+
+        ' now fill a grid box with the data. 
+        allDataFromTableDataAdapter = New SqlDataAdapter(selectAllOpenTicketsSQL, DB_connection_string)
+
+        
+        '' EXACTLY WHAT I WANT TO DO RIGHT HERE./
+        addDataFromTableDataTable = New DataTable()
+        ' THIS FILLS THE DATA GRID. 
+        allDataFromTableDataAdapter.Fill(addDataFromTableDataTable)
+        '' THIS SAYS THE DATA GRID SOURCE IS THE DATA GRID ITSELF. 
+        createTicketDataGridView.DataSource = addDataFromTableDataTable
+        
         ' may need this later 
         'Dim technameRowCount As Integer = objTechNamesDataTable.Rows.Count
         'Dim techName As String = objTableDataAdapter
@@ -70,7 +90,7 @@ Public Class CreateTicket
 
     End Sub
     'PART oF TESTING
-    Dim createTicketData As New SqlDataAdapter
+    Dim createTicketDataSQL As New SqlDataAdapter
 
 
 
@@ -78,33 +98,41 @@ Public Class CreateTicket
     Dim testMe As PiecesNeeded
     Private Sub addProblemTicket_Click(sender As Object, e As EventArgs) Handles addProblemTicket.Click
         ' when this button is clicked set the values needed to equal to the user input 
+
+
+        Dim techtoAssignTask As String = assignedTechcomboBox.SelectedValue.ToString
+
+        ' here is the assigned tech 
+        '    MessageBox.Show("To make sure we have the right tech selected here is the assigned tech " + techtoAssignTask)
+        Dim dateCalledIn As Date = Date.Now
+        'date called in 
+
+        Dim problemDescription As String = createTicket_RichTextBox.Text
+        ' the problem description 
+
+        Dim problemSeverity As Integer = CInt(severityNumericUpDown.Value)
+        ' here is the severity 
+
+        Dim problemLocation As String = locationComboBox.SelectedItem.ToString
+
+        Dim sqlinsertTicketCommand As String = "INSERT INTO OpenTickets VALUES (@Tech_ID, @Problem_Ticket_Number, @Description, @Date_called_in,@location, @severity)"
+        'tech id , problem ticket number, description, date called in, location of problem, severity
+
+        Dim insertProblemticketSqlCommand As New SqlCommand(sqlinsertTicketCommand, DB_connection_string)
+
+        insertProblemticketSqlCommand.Parameters.AddWithValue("@Tech_ID", techtoAssignTask)
+        insertProblemticketSqlCommand.Parameters.AddWithValue("@Problem_Ticket_Number", 2)
+        insertProblemticketSqlCommand.Parameters.AddWithValue("@Description", problemDescription)
+        insertProblemticketSqlCommand.Parameters.AddWithValue("@Date_called_in", dateCalledIn)
+        insertProblemticketSqlCommand.Parameters.AddWithValue("@location", problemLocation)
+        insertProblemticketSqlCommand.Parameters.AddWithValue("@severity", problemSeverity)
+
         Try
-
-            Dim techtoAssignTask As String = assignedTechcomboBox.SelectedText
-            ' here is the assigned tech 
-
-            Dim problemSeverity As Integer = CInt(severityNumericUpDown.Value)
-            ' here is the severity 
-
-            Dim problemDescription As String = createTicket_RichTextBox.Text
-            ' the problem description 
-
-            Dim dateCalledIn As Date = Today
-
-            ''TODO TEST THIS STRING TO MAKE SURE IT IS ADDING DATA AS I THINK IT IS. 
-            Dim sqlCreateTicketCommand As String = "INSERT into [Open Tickets] @Techname , @ datein , @ description, @severity, @Problem Ticket Numer"
-            'tech id , problem ticket number, description, date called in, location of problem, severity
-
-
-            Dim objConnection As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;user id=sa;password=paSSw0rd29") 'Change to your actual password!
-
-
-            'still need to initialize this to create establis the connection. this may needs to be delcared at the initialization of this class. 
-            createTicketData = New SqlDataAdapter(sqlCreateTicketCommand, objConnection)
-
-
+            DB_connection_string.Open()
+            insertProblemticketSqlCommand.ExecuteNonQuery()
+            DB_connection_string.Close()
             'create a request to the database to send the above information 
-            'Dim createTicketConnection As SqlClient = (SqlCommand, sqlconnection)
+
 
             'create a lable to show today's date. That will be helpful. 
             'TODO AFTER THIS IS WORKING ALLOW USER TO SET DATE IN AND DATE RESOLVED. AS AN EXTRA FEATURE:
@@ -112,9 +140,10 @@ Public Class CreateTicket
         Catch similarErr As Exception
             MessageBox.Show(similarErr.Message + vbNewLine + " I have experienced a similar error " + vbNewLine + " within the sqlcreateticketcommand. Checker the sql queries is setup corretly")
         End Try
+        'NOT FUNCTIONING YET 
 
 
         'LEFT OF REVIEWING COFFEE SHOP EXAMPLE SAVE BUTTON. 
-
+        MessageBox.Show("Ticket sent to Database" + vbNewLine + "Check Database table to see updated content", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 End Class

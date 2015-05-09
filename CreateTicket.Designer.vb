@@ -32,10 +32,10 @@ Partial Class CreateTicket
         Me.assignedTechcomboBox = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.createTicketDataGridView = New System.Windows.Forms.DataGridView()
-        Me.close_ProblemTicketWindow = New System.Windows.Forms.Button()
         Me.severityNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.createTicket_RichTextBox = New System.Windows.Forms.RichTextBox()
         Me.dateLabel = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.createTicketDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.severityNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,7 +64,7 @@ Partial Class CreateTicket
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(97, 23)
         Me.Cancel_Button.TabIndex = 1
-        Me.Cancel_Button.Text = "Cancel"
+        Me.Cancel_Button.Text = "Close Window"
         '
         'addProblemTicket
         '
@@ -130,19 +130,10 @@ Partial Class CreateTicket
         'createTicketDataGridView
         '
         Me.createTicketDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.createTicketDataGridView.Location = New System.Drawing.Point(209, 12)
+        Me.createTicketDataGridView.Location = New System.Drawing.Point(259, 38)
         Me.createTicketDataGridView.Name = "createTicketDataGridView"
         Me.createTicketDataGridView.Size = New System.Drawing.Size(433, 213)
         Me.createTicketDataGridView.TabIndex = 35
-        '
-        'close_ProblemTicketWindow
-        '
-        Me.close_ProblemTicketWindow.Location = New System.Drawing.Point(615, 326)
-        Me.close_ProblemTicketWindow.Name = "close_ProblemTicketWindow"
-        Me.close_ProblemTicketWindow.Size = New System.Drawing.Size(75, 23)
-        Me.close_ProblemTicketWindow.TabIndex = 34
-        Me.close_ProblemTicketWindow.Text = "Close "
-        Me.close_ProblemTicketWindow.UseVisualStyleBackColor = True
         '
         'severityNumericUpDown
         '
@@ -159,23 +150,33 @@ Partial Class CreateTicket
         Me.createTicket_RichTextBox.Name = "createTicket_RichTextBox"
         Me.createTicket_RichTextBox.Size = New System.Drawing.Size(293, 99)
         Me.createTicket_RichTextBox.TabIndex = 45
-        Me.createTicket_RichTextBox.Text = "Rich text box. Try me out. "
+        Me.createTicket_RichTextBox.Text = ""
         '
         'dateLabel
         '
         Me.dateLabel.AutoSize = True
-        Me.dateLabel.Location = New System.Drawing.Point(39, 24)
+        Me.dateLabel.Location = New System.Drawing.Point(12, 24)
         Me.dateLabel.Name = "dateLabel"
         Me.dateLabel.Size = New System.Drawing.Size(79, 13)
         Me.dateLabel.TabIndex = 46
         Me.dateLabel.Text = "Today's Date : "
         '
-        'Dialog1
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(256, 9)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(77, 13)
+        Me.Label5.TabIndex = 47
+        Me.Label5.Text = "Open Tickets :"
+        '
+        'CreateTicket
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(716, 381)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.dateLabel)
         Me.Controls.Add(Me.createTicket_RichTextBox)
         Me.Controls.Add(Me.severityNumericUpDown)
@@ -186,12 +187,11 @@ Partial Class CreateTicket
         Me.Controls.Add(Me.assignedTechcomboBox)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.createTicketDataGridView)
-        Me.Controls.Add(Me.close_ProblemTicketWindow)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "Dialog1"
+        Me.Name = "CreateTicket"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Dialog1"
@@ -211,10 +211,10 @@ Partial Class CreateTicket
     Friend WithEvents assignedTechcomboBox As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents createTicketDataGridView As System.Windows.Forms.DataGridView
-    Friend WithEvents close_ProblemTicketWindow As System.Windows.Forms.Button
     Friend WithEvents addProblemTicket As System.Windows.Forms.Button
     Friend WithEvents severityNumericUpDown As System.Windows.Forms.NumericUpDown
     Friend WithEvents createTicket_RichTextBox As System.Windows.Forms.RichTextBox
     Friend WithEvents dateLabel As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 
 End Class
