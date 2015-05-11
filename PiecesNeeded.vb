@@ -1,205 +1,191 @@
 ﻿Public Structure Ticket3
-    ' each ticket in the database will need a 
+End Structure
+' each ticket in the database will need a 
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~SEPERATE STRUCTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+'' a light weight class. Does and can this relate to a DBO ?  
+'this row will contain a new ticket row like this [techID | ProblemTicketNumber | DateIn | BriefDescriptionOfProblem | Location | Severity ]
+
+' this is an experimental ticket for creating an open ticket using stucture 
+Public Structure Ticket
 
 
-    'Contains a User, CoffeeShop and Review structure.
+    ' this isn't implemented yet , but will be recorded as the person logging the ticket. 
+    Private _selectedTechID As String
 
-    Public Structure User
-        ' also the structure that the user will take when creating the user object. 
-        Private _username As String
+    Public Property selectedTechID() As String
+        Get
+            Return _selectedTechID
+        End Get
+        Set(ByVal value As String)
+            _selectedTechID = value
+        End Set
+    End Property
 
-        ' creates a username variable without creating multiple instances of the username property of 
-        'the new or given username 
-        Public Property Username() As String
-            Get
-                Return _username
-            End Get
-            Set(ByVal value As String)
-                _username = value
-            End Set
-        End Property
+    ' the ticket number 
+    Private _ticketId As Integer
 
-        Private _email As String
-        Public Property Email() As String
-            Get
-                Return _email
-            End Get
-            Set(ByVal value As String)
-                _email = value
-            End Set
-        End Property
+    Public Property Id() As Integer
+        Get
+            Return _ticketId
+        End Get
+        Set(ByVal value As Integer)
+            _ticketId = value
+        End Set
+    End Property
 
-        '' this id will be used to id a user by number relating to a hashmap.
-        Private _id As Integer
-        Public Property Id() As Integer
-            Get
-                Return _id
-            End Get
-            Set(ByVal value As Integer)
-                _id = value
-            End Set
-        End Property
+    Private _dateIn As Date
+    Public Property dateCalledIN() As Date
+        Get
+            Return _dateIn
+        End Get
 
-        ' returns the username and e-mail in this format. this format append the e-mail to the username format.
-        Public Overrides Function ToString() As String
-            Return Username + "(" + Email + ")"
-        End Function
+        Set(value As Date)
+            _dateIn = value
+        End Set
+    End Property
 
-    End Structure
+    Private _descriptionOfProblem As String
 
-    '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~SEPERATE STRUCTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    '' a light weight class. Does and can this relate to a DBO ?  
-    '' Ticket needs to have Tech ID , Problem Ticket Number, Description, Datecalledin, location , and severity 
-    Public Structure Ticket
+    Public Property descrip_of_prob As String
+        Get
+            Return _descriptionOfProblem
+        End Get
+        Set(value As String)
+            _descriptionOfProblem = value
+        End Set
+    End Property
 
-        Private _locationOfProblem As String
-        Public Property Location() As String
-            Get
-                Return _locationOfProblem
-            End Get
-            Set(ByVal value As String)
-                _locationOfProblem = value
-            End Set
+    Private _locationOfProblem As String
 
-        End Property
-        ' this isn't implemented yet , but will be recorded as the person logging the ticket. 
-        Private _user As String
-        Public Property User() As String
-            Get
-                Return _user
-            End Get
-            Set(ByVal value As String)
-                _user = value
-            End Set
-        End Property
+    Public Property Location() As String
+        Get
+            Return _locationOfProblem
+        End Get
+        Set(ByVal value As String)
+            _locationOfProblem = value
+        End Set
 
-        ' the ticket number 
-        Private _ticketId As Integer
-        Public Property Id() As Integer
-            Get
-                Return _ticketId
-            End Get
-            Set(ByVal value As Integer)
-                _ticketId = value
-            End Set
-        End Property
+    End Property
+    '' the serverity of the problem
 
-        '' the serverity of the problem
-        Private _severity As Integer
-        Public Property Severity() As Integer
-            Get
-                Return _severity
-            End Get
-            Set(ByVal value As Integer)
-                _severity = value
-            End Set
-        End Property
+    Private _severity As Integer
 
-        ' don't think i need this 
-        'Public Overrides Function ToString() As String
-        '    Return Name + ", " + Address
-        'End Function
+    Public Property Severity() As Integer
+        Get
+            Return _severity
+        End Get
+        Set(ByVal value As Integer)
+            _severity = value
+        End Set
+    End Property
 
-    End Structure
-    '' the structure a review needs to have. think of structures as light weight classes. 
-    '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Public Structure Review
+    Sub New(techId As String, ticketNum As Integer, datein As Date, description As String, location As String, severity As Integer)
 
-        Private _rating As Integer
-        Public Property Rating() As Integer
-            Get
-                Return _rating
-            End Get
-            Set(ByVal value As Integer)
-                _rating = value
-            End Set
-        End Property
+    End Sub
+    'this row will contain a new ticket row like this [techID | ProblemTicketNumber | DateIn | BriefDescriptionOfProblem | Location | Severity ]
+    'Public Overrides Function ToString() As String
+    '   Return ("@TechID," + _selectedTechID + "@ProblemTicketNumber," + _ticketId + "@Datein," + dateCalledIN.ToShortDateString
+    'End Function
+
+End Structure
+'' the structure a review needs to have. think of structures as light weight classes. 
+'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Public Structure Review
+
+    Private _rating As Integer
+    Public Property Rating() As Integer
+        Get
+            Return _rating
+        End Get
+        Set(ByVal value As Integer)
+            _rating = value
+        End Set
+    End Property
 
 
-        Private _reviewText As String
-        Public Property ReviewText() As String
-            Get
-                Return _reviewText
-            End Get
-            Set(ByVal value As String)
-                _reviewText = value
-            End Set
-        End Property
+    Private _reviewText As String
+    Public Property ReviewText() As String
+        Get
+            Return _reviewText
+        End Get
+        Set(ByVal value As String)
+            _reviewText = value
+        End Set
+    End Property
 
-        Private _userID As Integer
-        Public Property UserID() As Integer
-            Get
-                Return _userID
-            End Get
-            Set(ByVal value As Integer)
-                _userID = value
-            End Set
-        End Property
-        ''' <summary>
-        ''' 'different kind of user 
-        ''' </summary>
-        ''' <remarks></remarks>
-        Private _user As User
-        Public Property TheUser() As User
-            Get
-                Return _user
-            End Get
-            Set(ByVal value As User)
-                _user = value
-            End Set
-        End Property
+    Private _userID As Integer
+    Public Property UserID() As Integer
+        Get
+            Return _userID
+        End Get
+        Set(ByVal value As Integer)
+            _userID = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' 'different kind of user 
+    ''' </summary>
+    ''' <remarks></remarks>
+    'Private _user As User
+    'Public Property TheUser() As User
+    '    Get
+    '        Return _user
+    '    End Get
+    '    Set(ByVal value As User)
+    '        _user = value
+    '    End Set
+    'End Property
 
-        Private _userName As String
-        Public Property UserName() As String
-            Get
-                Return _userName
-            End Get
-            Set(ByVal value As String)
-                _userName = value
-            End Set
-        End Property
+    Private _userName As String
+    Public Property UserName() As String
+        Get
+            Return _userName
+        End Get
+        Set(ByVal value As String)
+            _userName = value
+        End Set
+    End Property
 
 
-        Private _coffeeShopID As Integer
-        Public Property ShopID() As Integer
-            Get
-                Return _coffeeShopID
-            End Get
-            Set(ByVal value As Integer)
-                _coffeeShopID = value
-            End Set
-        End Property
-        '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!COFFEESHOP!!!!!!!!!!!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Private _coffeeShopID As Integer
+    Public Property ShopID() As Integer
+        Get
+            Return _coffeeShopID
+        End Get
+        Set(ByVal value As Integer)
+            _coffeeShopID = value
+        End Set
+    End Property
+    '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!COFFEESHOP!!!!!!!!!!!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        ' THE COFFEE SHOP HERE IS WHAT IS NEEDED TO CREATE A NEW COFFEE SHOP DATE. 
-     
+    ' THE COFFEE SHOP HERE IS WHAT IS NEEDED TO CREATE A NEW COFFEE SHOP DATE. 
 
-        'Private _coffeeShop As CoffeeShop
-        'Public Property TheCoffeeShop() As CoffeeShop
-        '    Get
-        '        Return _coffeeShop
-        '    End Get
-        '    Set(ByVal value As CoffeeShop)
-        '        _coffeeShop = value
-        '    End Set
-        'End Property
 
-        Private _date As Date
-        Public Property ReviewDate() As Date
-            Get
-                Return _date
-            End Get
-            Set(ByVal value As Date)
-                _date = value
-            End Set
-        End Property
+    'Private _coffeeShop As CoffeeShop
+    'Public Property TheCoffeeShop() As CoffeeShop
+    '    Get
+    '        Return _coffeeShop
+    '    End Get
+    '    Set(ByVal value As CoffeeShop)
+    '        _coffeeShop = value
+    '    End Set
+    'End Property
 
-        'Used for the display in the GUI
+    Private _date As Date
+    Public Property ReviewDate() As Date
+        Get
+            Return _date
+        End Get
+        Set(ByVal value As Date)
+            _date = value
+        End Set
+    End Property
 
-        ' also check to see how this is formatted when sent to the DB.
-        Public Overrides Function ToString() As String
-            Return String.Format("{0} stars - {1} - {2} - {3} ", Rating, ReviewText, UserName, ReviewDate.ToShortDateString)
-        End Function
+    'Used for the display in the GUI
 
-    End Structure
+    ' also check to see how this is formatted when sent to the DB.
+    Public Overrides Function ToString() As String
+        Return String.Format("{0} stars - {1} - {2} - {3} ", Rating, ReviewText, UserName, ReviewDate.ToShortDateString)
+    End Function
+
 End Structure

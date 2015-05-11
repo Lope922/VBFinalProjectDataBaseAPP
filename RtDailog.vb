@@ -23,6 +23,15 @@ Public Class rtDialog
     Dim DB_connection_string As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
     Private Sub ResolveTicketDialog_Load(sender As Object, e As EventArgs) Handles Me.Load
 
+        'TO DO WORK ON THIS PART NEXT. RESOLVE A FRIGGIN TICKET
+        'Try USING THIS SNIPPET
+        ' Try
+        'Dim row As DataGridViewRow = openTicketsDataGridView.SelectedRows.Item(0)
+
+
+
+
+
         'make sure user can only select one row because of how tickets are resolved. 
         openTicketsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
@@ -78,6 +87,7 @@ Public Class rtDialog
         'column name to be displayed in the combo box.
         problemTicketNumberToResolve.DisplayMember = columnName
         problemTicketNumberToResolve.ValueMember = columnName
+
 
     End Sub
 
