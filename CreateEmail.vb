@@ -1,4 +1,5 @@
 ﻿Imports System.Windows.Forms
+Imports System.Data.SqlClient
 
 Public Class CreateEmail
 
@@ -6,7 +7,7 @@ Public Class CreateEmail
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
         ' once the user clicks the send button use the problem ticket window to send propblem ticket from reference window that shows open tickets
 
-       
+
 
         'show the avialable tickets by problem ticket and ticket Number
 
@@ -26,52 +27,90 @@ Public Class CreateEmail
 
     End Sub
 
+
+    Dim objTableDataAdapter As SqlDataAdapter
+
+
+
+    Dim objTechNamesDataTable As New DataTable()
+
+
+    Dim DB_connection_string As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
     Private Sub CreateEmail_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-        'load available techs from techlist. 
+
+        ' techAvailableToeMailComboBox.SelectedItem = Nothing
+        'try to find some way to make sure that user want's the selected user to be the assigned tech to recieve the e-mail. 
+
+        problemTicketToEmailComboBox.Enabled = False
 
 
-        'IF THE USER CLICKS THE ADD TICKET BUTTON EXECTURE WHAT IS BELOW.
-        'If NewUserDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
+        'LOAD THE AVAILABLE TECHS TO E-MAIL FROM THE TECHLIST. 
+        'Fetch names of tables and display them in first combobox
+        objTableDataAdapter = New SqlDataAdapter("SELECT [Tech name] FROM TechList", DB_connection_string)
+        ' use the tech names data table to fill the obj table data adapter 
+        objTableDataAdapter.Fill(objTechNamesDataTable)
 
-        '    'Fetch new user from Tag, extract username and email
+        'the data source for the combo box is the available techs in the database. 
+        techAvailableToeMailComboBox.DataSource = objTechNamesDataTable
 
-        '    Dim user As User = CType(NewUserDialog.Tag, User)
+        Dim columnName As String = "Tech Name"
 
-        'DONE AND DONE 
-        '    Dim newUserInsertSQL As String = "insert into users values (@username, @email)"
-        '    Dim sqlAddUserCommand As New SqlCommand(newUserInsertSQL, objConnection)
+        techAvailableToeMailComboBox.DisplayMember = columnName
 
-
-        '    sqlAddUserCommand.Parameters.AddWithValue("@username", user.Username)
-        '    sqlAddUserCommand.Parameters.AddWithValue("@email", user.Email)
-
-        '    Try
-        '        objConnection.Open()
-        '        sqlAddUserCommand.ExecuteNonQuery()
-        '        objConnection.Close()
-
-        '        MessageBox.Show("New user added, reload table in datagrid view to verify")
-
-        '    Catch se As SqlException
-        '        'If this username already exists, we'll get a specific SQLException 
-        '        'SQL Exceptions contain an error code, to help identify different types of errors.
-        '        'Trying to insert a row with a unique column value that duplicates the same value
-        '        ' in another row generates a SQLException with error code 2627. You can look these up online - Google "SQL Server error codes"
-        '      
-        'If se.Number = 2627 Then
-        '            'Duplicate row, this user already exists
-        '            MessageBox.Show("This user or email already exists the database in, try again")
-        '        Else
-        '            MessageBox.Show("Database error: " & se.Message) 'Don't display the exception message in production code!
-        '        End If
-
-        '    End Try
-
-        'End If
+        techAvailableToeMailComboBox.ValueMember = columnName
 
 
 
-       
+
+        '' ONCE THIS IS LOADED THE USER CAN PICK WHO THEY WOULD LIKE TO E-MAIL , WHICH SHOULD THEN LOAD THE AVAILBLE TICKET BY TICCKET NUMBER. 
+
+
+
+
+    End Sub
+
+    Private Sub viewOpenTickets_Click(sender As Object, e As EventArgs) Handles viewOpenTickets.Click
+        'after the user has viewed the list of open ticket's they can select the technician to email and then e-mail them their open tickets. 
+        problemTicketToEmailComboBox.Enabled = True
+
+        ' they should then be able to reference which technician to e-mail the problem ticket number. 
+
+        ' maybe create some radio buttons to either e-mail selected ticket from data row table, and send just one ticket , 
+        'or another radio button to select all open tickets and send by severity and oldest date first at the top of the list. 
+
+        Open_Ticket_Dialog_Window.Show()
+
+
+
+
+    End Sub
+
+    Private Sub Send_Button_Click(sender As Object, e As EventArgs) Handles Send_Button.Click
+        'send the e-mail to the tech 
+
+        '' this came from database support APP. See what this was from it may be useful. 
+        'Dim row As DataGridViewRow = grdTechnicians.SelectedRows.Item(0)
+
+        'From the row, get the second cell - the one with the email in
+        'Dim techEmail As String = row.Cells.Item(2).FormattedValue.ToString
+
+        Dim techName As String = techAvailableToeMailComboBox.SelectedValue.ToString
+        Dim subject As String = "You have work to do!"
+
+        Dim testText As String = "Here is where the formatted message would go."
+        '' try to send an e-mail using outlook if installed. 
+        Try
+            Process.Start(String.Format("mailto:{0}?subject={1}&body={2}", techName.ToString, subject, testText.ToString))
+
+
+            'TODO FIX E-MAIL ADDRESS AND ADD MESSAGE CONTNETS TO THE THE STRING FORMAT. 
+
+        Catch ex As Exception
+            MessageBox.Show("No default email client (e.g. Outlook) is not configured")
+        End Try
+
+        'If you wanted to, this would be fairly easy to modify to email all technicians
+        'Or, to change the selection mode to multiple rows and email selected technicians
     End Sub
 End Class

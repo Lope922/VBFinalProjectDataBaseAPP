@@ -29,6 +29,7 @@ Public Class Form1
     End Sub
 
     Private Sub emailTech_Click(sender As Object, e As EventArgs) Handles emailTech.Click
+        Me.Hide()
         CreateEmail.ShowDialog()
     End Sub
 
@@ -57,7 +58,8 @@ Public Class Form1
         ' just created a talbe that has open tickets that stores : TECH ID AS STRING, PROBLEM TICKET AS INT, DESCRIPTION AS STRING, DATE CALLED IN AS DATE, LOCATION AS STRING. 
 
         ' dim select all Sql string that will make the request 
-        Dim selectAllSQL As String = "SELECT * FROM [OpenTickets]"
+        ' select everything from the ticket table 
+        Dim selectAllSQL As String = "SELECT * FROM SupportTicket"
 
         'testobjAdapter = New SqlDataAdapter(selectAllSQL, sqlConnectionSTring)
 
@@ -75,6 +77,15 @@ Public Class Form1
         allDataFromTableDataAdapter.Fill(addDataFromTableDataTable)
         '' THIS SAYS THE DATA GRID SOURCE IS THE DATA GRID ITSELF. 
         openTicketsDataGridView1.DataSource = addDataFromTableDataTable
+
+    End Sub
+
+    Private Sub resolveProblemTicketButton_Click(sender As Object, e As EventArgs) Handles resolveProblemTicketButton.Click
+        rtDialog.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub addTechButton_Click(sender As Object, e As EventArgs) Handles addTechButton.Click
 
     End Sub
 End Class

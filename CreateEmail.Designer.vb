@@ -22,10 +22,10 @@ Partial Class CreateEmail
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.viewOpenTickets = New System.Windows.Forms.Button()
+        Me.problemTicketToEmailComboBox = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.techAvailableToeMailComboBox = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Cancel_Button = New System.Windows.Forms.Button()
@@ -33,22 +33,22 @@ Partial Class CreateEmail
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Button1
+        'viewOpenTickets
         '
-        Me.Button1.Location = New System.Drawing.Point(30, 127)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(122, 23)
-        Me.Button1.TabIndex = 17
-        Me.Button1.Text = "View Open Tickets"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.viewOpenTickets.Location = New System.Drawing.Point(30, 127)
+        Me.viewOpenTickets.Name = "viewOpenTickets"
+        Me.viewOpenTickets.Size = New System.Drawing.Size(122, 23)
+        Me.viewOpenTickets.TabIndex = 17
+        Me.viewOpenTickets.Text = "View Open Tickets"
+        Me.viewOpenTickets.UseVisualStyleBackColor = True
         '
-        'ComboBox2
+        'problemTicketToEmailComboBox
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(139, 65)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(162, 21)
-        Me.ComboBox2.TabIndex = 16
+        Me.problemTicketToEmailComboBox.FormattingEnabled = True
+        Me.problemTicketToEmailComboBox.Location = New System.Drawing.Point(139, 65)
+        Me.problemTicketToEmailComboBox.Name = "problemTicketToEmailComboBox"
+        Me.problemTicketToEmailComboBox.Size = New System.Drawing.Size(162, 21)
+        Me.problemTicketToEmailComboBox.TabIndex = 16
         '
         'Label2
         '
@@ -59,13 +59,15 @@ Partial Class CreateEmail
         Me.Label2.TabIndex = 15
         Me.Label2.Text = "Problem Ticket"
         '
-        'ComboBox1
+        'techAvailableToeMailComboBox
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(139, 18)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(162, 21)
-        Me.ComboBox1.TabIndex = 14
+        Me.techAvailableToeMailComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.techAvailableToeMailComboBox.FormattingEnabled = True
+        Me.techAvailableToeMailComboBox.Items.AddRange(New Object() {"--"})
+        Me.techAvailableToeMailComboBox.Location = New System.Drawing.Point(139, 18)
+        Me.techAvailableToeMailComboBox.Name = "techAvailableToeMailComboBox"
+        Me.techAvailableToeMailComboBox.Size = New System.Drawing.Size(162, 21)
+        Me.techAvailableToeMailComboBox.TabIndex = 14
         '
         'Label1
         '
@@ -115,10 +117,10 @@ Partial Class CreateEmail
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(435, 175)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.ComboBox2)
+        Me.Controls.Add(Me.viewOpenTickets)
+        Me.Controls.Add(Me.problemTicketToEmailComboBox)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.techAvailableToeMailComboBox)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -133,10 +135,10 @@ Partial Class CreateEmail
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
+    Friend WithEvents viewOpenTickets As System.Windows.Forms.Button
+    Friend WithEvents problemTicketToEmailComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents techAvailableToeMailComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button

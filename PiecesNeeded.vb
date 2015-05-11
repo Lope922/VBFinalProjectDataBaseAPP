@@ -1,103 +1,23 @@
-﻿Imports System.Data.SqlClient
-
-Public Class PiecesNeeded
-
-    ''~~~~~~~~~~~~~~~~@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    'tech list table needs(tech name as string , tech email as string, techid , number of tickets, resolved tickets, callbacks, ints ints ints
-    Private Structure TechObj
+﻿Public Structure Ticket3
+    ' each ticket in the database will need a 
 
 
-        ' 
-        Dim techId As String
+    'Contains a User, CoffeeShop and Review structure.
 
-        Dim techNumOfTickets As Integer
-        Dim resolvedTickets As Integer
+    Public Structure User
+        ' also the structure that the user will take when creating the user object. 
+        Private _username As String
 
-        Dim DATEIN As Date
-        Dim RESOLVEDATE As Date
-
-        Dim LOCATION As String
-
-        Dim Description As String
-
-        '' see coffee demo and compare this to another object and see if i am using structure right. 
-    End Structure
-
-
-    '' test is just for testing purposes to send a new ticket to the database
-    Sub New(techID As String, datin As Date, location As String, description As String)
-    End Sub
-    '' this is a big class that holds all the pieces needed at the moment will split as necessary, just need to get underway modularizing the program. 
-
-    '' in this problem ticket for i will need to be able to create a problem ticket
-    ' each problem ticket needs to have : Severity of problem : an assigned technician : date called in :
-    ' : location of problem : ticketId number : 
-
-    ' in the database the column names are TicketID_# as string , Severity as integer, AssignedTech as string, Date as date, Location as string , Description as string 
-
-
-    '' move this into a seperate class to called pieces. At first they might all just be one global class that each form can access. and can be divivded later. 
-
-    Dim objConnection As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
-    '  Dim insertTicketinfoSQL As String = "INSERT INTO create_SupportTicket values(@Severity,@AssignedTech,@Date,@Location,@Description)"
-    ' Dim problemDescription As String = problemDescriptionTextBox.Text
-    'date called in 
-    Dim dateIn As New Date
-
-
-    'date resolved
-    Dim dateOut As Date
-
-    ' database should handleTicket ID 
-    'Ticket Id as string 
-
-    Dim severity As Integer
-
-    Public Property retrieveProblemSeverity As Integer
-        Get
-            Return severity
-        End Get
-        Set(value As Integer)
-            value = severity
-        End Set
-    End Property
-    Public Property dateCalledIn() As Date
-        Get
-            dateIn.DayOfYear.ToString()
-            Return dateIn
-        End Get
-        Set(value As Date)
-            value = dateIn
-        End Set
-    End Property
-
-
-    Public Structure Tech ' the structure/form the tech object needs to take. With pieces it needs. 
-
-        Private username_fromLogin As String ' this will be the login set when user logs in, and will also be a tag when sending e-mails as well as other forms. 
-
-        Public Property Username() As String ' this will call a function that gets and sets the value of the function. 
+        ' creates a username variable without creating multiple instances of the username property of 
+        'the new or given username 
+        Public Property Username() As String
             Get
-                Return username_fromLogin ' set to the instance of the user login when initializing. 
-
+                Return _username
             End Get
-
-            Set(value As String)
-
-                username_fromLogin = value
-
+            Set(ByVal value As String)
+                _username = value
             End Set
-
         End Property
-
-        '' test this out to see if i can get just tech name to show up in the combo drop down box. 
-
-        ' tech id also needs e-mail address to be sent in e-mails. 
-        'may only need to be written as an overloaded sub. 
-
-        'leaving off here.  <~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        '' this sniippet is from the coffee shop program. 
 
         Private _email As String
         Public Property Email() As String
@@ -109,6 +29,7 @@ Public Class PiecesNeeded
             End Set
         End Property
 
+        '' this id will be used to id a user by number relating to a hashmap.
         Private _id As Integer
         Public Property Id() As Integer
             Get
@@ -118,5 +39,167 @@ Public Class PiecesNeeded
                 _id = value
             End Set
         End Property
+
+        ' returns the username and e-mail in this format. this format append the e-mail to the username format.
+        Public Overrides Function ToString() As String
+            Return Username + "(" + Email + ")"
+        End Function
+
     End Structure
-End Class
+
+    '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~SEPERATE STRUCTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    '' a light weight class. Does and can this relate to a DBO ?  
+    '' Ticket needs to have Tech ID , Problem Ticket Number, Description, Datecalledin, location , and severity 
+    Public Structure Ticket
+
+        Private _locationOfProblem As String
+        Public Property Location() As String
+            Get
+                Return _locationOfProblem
+            End Get
+            Set(ByVal value As String)
+                _locationOfProblem = value
+            End Set
+
+        End Property
+        ' this isn't implemented yet , but will be recorded as the person logging the ticket. 
+        Private _user As String
+        Public Property User() As String
+            Get
+                Return _user
+            End Get
+            Set(ByVal value As String)
+                _user = value
+            End Set
+        End Property
+
+        ' the ticket number 
+        Private _ticketId As Integer
+        Public Property Id() As Integer
+            Get
+                Return _ticketId
+            End Get
+            Set(ByVal value As Integer)
+                _ticketId = value
+            End Set
+        End Property
+
+        '' the serverity of the problem
+        Private _severity As Integer
+        Public Property Severity() As Integer
+            Get
+                Return _severity
+            End Get
+            Set(ByVal value As Integer)
+                _severity = value
+            End Set
+        End Property
+
+        ' don't think i need this 
+        'Public Overrides Function ToString() As String
+        '    Return Name + ", " + Address
+        'End Function
+
+    End Structure
+    '' the structure a review needs to have. think of structures as light weight classes. 
+    '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Public Structure Review
+
+        Private _rating As Integer
+        Public Property Rating() As Integer
+            Get
+                Return _rating
+            End Get
+            Set(ByVal value As Integer)
+                _rating = value
+            End Set
+        End Property
+
+
+        Private _reviewText As String
+        Public Property ReviewText() As String
+            Get
+                Return _reviewText
+            End Get
+            Set(ByVal value As String)
+                _reviewText = value
+            End Set
+        End Property
+
+        Private _userID As Integer
+        Public Property UserID() As Integer
+            Get
+                Return _userID
+            End Get
+            Set(ByVal value As Integer)
+                _userID = value
+            End Set
+        End Property
+        ''' <summary>
+        ''' 'different kind of user 
+        ''' </summary>
+        ''' <remarks></remarks>
+        Private _user As User
+        Public Property TheUser() As User
+            Get
+                Return _user
+            End Get
+            Set(ByVal value As User)
+                _user = value
+            End Set
+        End Property
+
+        Private _userName As String
+        Public Property UserName() As String
+            Get
+                Return _userName
+            End Get
+            Set(ByVal value As String)
+                _userName = value
+            End Set
+        End Property
+
+
+        Private _coffeeShopID As Integer
+        Public Property ShopID() As Integer
+            Get
+                Return _coffeeShopID
+            End Get
+            Set(ByVal value As Integer)
+                _coffeeShopID = value
+            End Set
+        End Property
+        '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!COFFEESHOP!!!!!!!!!!!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        ' THE COFFEE SHOP HERE IS WHAT IS NEEDED TO CREATE A NEW COFFEE SHOP DATE. 
+     
+
+        'Private _coffeeShop As CoffeeShop
+        'Public Property TheCoffeeShop() As CoffeeShop
+        '    Get
+        '        Return _coffeeShop
+        '    End Get
+        '    Set(ByVal value As CoffeeShop)
+        '        _coffeeShop = value
+        '    End Set
+        'End Property
+
+        Private _date As Date
+        Public Property ReviewDate() As Date
+            Get
+                Return _date
+            End Get
+            Set(ByVal value As Date)
+                _date = value
+            End Set
+        End Property
+
+        'Used for the display in the GUI
+
+        ' also check to see how this is formatted when sent to the DB.
+        Public Overrides Function ToString() As String
+            Return String.Format("{0} stars - {1} - {2} - {3} ", Rating, ReviewText, UserName, ReviewDate.ToShortDateString)
+        End Function
+
+    End Structure
+End Structure

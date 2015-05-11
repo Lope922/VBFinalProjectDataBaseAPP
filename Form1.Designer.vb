@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.createTicketButton = New System.Windows.Forms.Button()
         Me.resolveProblemTicketButton = New System.Windows.Forms.Button()
         Me.viewOpenTickets = New System.Windows.Forms.Button()
@@ -71,7 +72,7 @@ Partial Class Form1
         '
         'addTechButton
         '
-        Me.addTechButton.Location = New System.Drawing.Point(12, 122)
+        Me.addTechButton.Location = New System.Drawing.Point(12, 180)
         Me.addTechButton.Name = "addTechButton"
         Me.addTechButton.Size = New System.Drawing.Size(148, 23)
         Me.addTechButton.TabIndex = 3
@@ -84,7 +85,7 @@ Partial Class Form1
         Me.emailTech.Name = "emailTech"
         Me.emailTech.Size = New System.Drawing.Size(148, 23)
         Me.emailTech.TabIndex = 4
-        Me.emailTech.Text = "send E-mail To Tech"
+        Me.emailTech.Text = "Send E-mail To Tech"
         Me.emailTech.UseVisualStyleBackColor = True
         '
         'StatusStrip1
@@ -159,19 +160,23 @@ Partial Class Form1
         Me.testPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.testPanel1.Controls.Add(Me.openTicketsDataGridView1)
         Me.testPanel1.ForeColor = System.Drawing.Color.White
-        Me.testPanel1.Location = New System.Drawing.Point(426, 44)
+        Me.testPanel1.Location = New System.Drawing.Point(461, 35)
         Me.testPanel1.Name = "testPanel1"
-        Me.testPanel1.Size = New System.Drawing.Size(459, 268)
+        Me.testPanel1.Size = New System.Drawing.Size(441, 262)
         Me.testPanel1.TabIndex = 13
         '
         'openTicketsDataGridView1
         '
         Me.openTicketsDataGridView1.AllowUserToAddRows = False
         Me.openTicketsDataGridView1.AllowUserToDeleteRows = False
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.openTicketsDataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.openTicketsDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.openTicketsDataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
         Me.openTicketsDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.openTicketsDataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.openTicketsDataGridView1.Location = New System.Drawing.Point(13, 12)
+        Me.openTicketsDataGridView1.Location = New System.Drawing.Point(4, 3)
         Me.openTicketsDataGridView1.Name = "openTicketsDataGridView1"
         Me.openTicketsDataGridView1.ShowEditingIcon = False
         Me.openTicketsDataGridView1.Size = New System.Drawing.Size(434, 253)

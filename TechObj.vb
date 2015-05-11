@@ -31,8 +31,8 @@
             techNameinstance = value
         End Set
     End Property
+    ' may not need this contstructor to send object to the database. 
+    'Sub New(techname As String, techid As String, techemail As String)
 
-    Sub New(techname As String, techid As String, techemail As String)
-
-    End Sub
+    'End Sub
 End Class
