@@ -6,31 +6,16 @@ Public Class rtDialog
 
 
     Private Sub closeButton_Click(sender As Object, e As EventArgs) Handles closeButton.Click
-
-
         Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Close()
 
         Form1.Show()
     End Sub
+    'global variables within this form. 
     Dim objTableDataAdapter As SqlDataAdapter
-
-
-
     Dim objTechNamesDataTable As New DataTable()
-
-
-    Dim DB_connection_string As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
+    Public DB_connection_string As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
     Private Sub ResolveTicketDialog_Load(sender As Object, e As EventArgs) Handles Me.Load
-
-        'TO DO WORK ON THIS PART NEXT. RESOLVE A FRIGGIN TICKET
-        'Try USING THIS SNIPPET
-        ' Try
-        'Dim row As DataGridViewRow = openTicketsDataGridView.SelectedRows.Item(0)
-
-
-
-
 
         'make sure user can only select one row because of how tickets are resolved. 
         openTicketsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect
@@ -39,23 +24,23 @@ Public Class rtDialog
         openTicketsDataGridView.EditMode = DataGridViewEditMode.EditProgrammatically
         'upon loading load the open tickets table into the resolved table. ' this may be tricky now working off of one table. May need to go back to two tables 
 
-
+        ' if i decide to go the combo box option to select the ticket to remove use this snippet just replace SQL request for what's needed
         ''Fetch names of tables and display them in first combobox
-        'objTableDataAdapter = New SqlDataAdapter("SELECT [Tech name] FROM TechList", DB_connection_string)
+        objTableDataAdapter = New SqlDataAdapter("SELECT ticketID FROM Tickets", DB_connection_string)
         '' use the tech names data table to fill the obj table data adapter 
-        'objTableDataAdapter.Fill(objTechNamesDataTable)
+        objTableDataAdapter.Fill(objTechNamesDataTable)
 
         ''the data source for the combo box is the available techs in the database. 
-        'assignedTechcomboBox.DataSource = objTechNamesDataTable
+        problemTicketNumberToResolve.DataSource = objTechNamesDataTable
 
-        'Dim columnName As String = "Tech Name"
+        Dim columnName As String = "ticketID"
 
-        'assignedTechcomboBox.DisplayMember = columnName
+        problemTicketNumberToResolve.DisplayMember = columnName
 
-        'assignedTechcomboBox.ValueMember = columnName
+        problemTicketNumberToResolve.ValueMember = columnName
 
         ' dim select all Sql string that will make the request 
-        Dim selectAllOpenTicketsSQL As String = "SELECT * FROM OpenTickets"
+        Dim selectAllOpenTicketsSQL As String = "SELECT * FROM Tickets"
         Dim allDataFromTableDataAdapter As SqlDataAdapter
         Dim addDataFromTableDataTable As DataTable
 
@@ -76,17 +61,17 @@ Public Class rtDialog
         'Dim technameRowCount As Integer = objTechNamesDataTable.Rows.Count
         'Dim techName As String = objTableDataAdapter
 
-        Dim openTickets As String = "Select problemTicketNumber from OpenTickets"
+        Dim openTickets As String = "Select ticketID from Tickets"
         'Dim openTicketComboBoxDataAdapter As SqlDataAdapter
         Dim openTicketsdataTable As New DataTable()
 
         ' Dim fillComboBoxFromTableDataTable As SqlDataAdapter
         Dim fillComboBoxFromTableDataTable As SqlDataAdapter = New SqlDataAdapter(openTickets, DB_connection_string)
         fillComboBoxFromTableDataTable.Fill(openTicketsdataTable)
-        Dim columnName As String = "problem_ticket_Number"
+        Dim ticketColumnName As String = "ticketID"
         'column name to be displayed in the combo box.
-        problemTicketNumberToResolve.DisplayMember = columnName
-        problemTicketNumberToResolve.ValueMember = columnName
+        problemTicketNumberToResolve.DisplayMember = ticketColumnName
+        problemTicketNumberToResolve.ValueMember = ticketColumnName
 
 
     End Sub
@@ -96,19 +81,50 @@ Public Class rtDialog
         'easiest may be the selected row. 
 
 
-
+        'TO DO WORK ON THIS PART NEXT. RESOLVE A FRIGGIN TICKET
+        'Try USING THIS SNIPPET
+        '  Try
+        Dim row As DataGridViewRow = openTicketsDataGridView.SelectedRows.Item(0)
 
         '' selected row is problem to solve. 
         'just have the user enter a description of the resolution and then they will be able to resolve the ticket either through an update or insert SQL command
 
         ''now how to get the database to know that this is the row that we want to edit 
 
+        Dim SQLinsertResolveTicketCommand As String = "Insert into ResolvedTickets values (@ticketID, @Dateout, @resolutionDescription)"
+
+        Dim SQLResolveTicketCommand As New SqlCommand(SQLinsertResolveTicketCommand, DB_connection_string)
+
+        SQLResolveTicketCommand.Parameters.AddWithValue("@ticketid", problemTicketNumberToResolve.SelectedValue)
+        SQLResolveTicketCommand.Parameters.AddWithValue("@Dateout", Date.Now)
+        SQLResolveTicketCommand.Parameters.AddWithValue("@resolutionDescription", resolutionDescription_RichTextBox.Text)
+
+        Try
+            DB_connection_string.Open()
+            SQLResolveTicketCommand.ExecuteNonQuery()
+            DB_connection_string.Close()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message + "Look into this error if throw and try to write meaning ful catch phrases" + vbNewLine + ":)", "Fix Me", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Try
+
+        'insert the primaryticketId number this was i can possibly merget the two. 
+
+
+
+
+        'see if i can extract the ticket number from the click of the button or user selection. 
 
 
         ' insert into the database the problem you solved. 
         ' so use the selected row as the row to insert. 
 
+        'INSERT INTO table2
+        '(column_name(s))
+        'Select column_name(s)
+        'FROM table1;
 
+        MessageBox.Show("here is the row you selected to edit" + row.ToString)
         'how does the database want the row to be sent in ? that is the big question 
 
         'start to establish a connection with the database to update the table. 

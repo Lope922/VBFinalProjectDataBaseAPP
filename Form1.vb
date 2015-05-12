@@ -59,7 +59,7 @@ Public Class Form1
 
         ' dim select all Sql string that will make the request 
         ' select everything from the ticket table 
-        Dim selectAllSQL As String = "SELECT * FROM SupportTicket"
+        Dim selectTicketSQL As String = "SELECT * FROM Tickets"
 
         'testobjAdapter = New SqlDataAdapter(selectAllSQL, sqlConnectionSTring)
 
@@ -68,7 +68,7 @@ Public Class Form1
 
         'openTicketsDataGridView1.DataSource = main_menu_test_Data_Grid_1st_queary
         ' now fill a grid box with the data. 
-        allDataFromTableDataAdapter = New SqlDataAdapter(selectAllSQL, sqlConnectionSTring)
+        allDataFromTableDataAdapter = New SqlDataAdapter(selectTicketSQL, sqlConnectionSTring)
 
 
         '' EXACTLY WHAT I WANT TO DO RIGHT HERE./

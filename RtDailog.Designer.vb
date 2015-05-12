@@ -24,7 +24,7 @@ Partial Class rtDialog
     Private Sub InitializeComponent()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.dateLabel = New System.Windows.Forms.Label()
-        Me.createTicket_RichTextBox = New System.Windows.Forms.RichTextBox()
+        Me.resolutionDescription_RichTextBox = New System.Windows.Forms.RichTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.openTicketsDataGridView = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -54,13 +54,13 @@ Partial Class rtDialog
         Me.dateLabel.TabIndex = 58
         Me.dateLabel.Text = "Today's Date : "
         '
-        'createTicket_RichTextBox
+        'resolutionDescription_RichTextBox
         '
-        Me.createTicket_RichTextBox.Location = New System.Drawing.Point(12, 118)
-        Me.createTicket_RichTextBox.Name = "createTicket_RichTextBox"
-        Me.createTicket_RichTextBox.Size = New System.Drawing.Size(255, 167)
-        Me.createTicket_RichTextBox.TabIndex = 57
-        Me.createTicket_RichTextBox.Text = ""
+        Me.resolutionDescription_RichTextBox.Location = New System.Drawing.Point(12, 118)
+        Me.resolutionDescription_RichTextBox.Name = "resolutionDescription_RichTextBox"
+        Me.resolutionDescription_RichTextBox.Size = New System.Drawing.Size(255, 167)
+        Me.resolutionDescription_RichTextBox.TabIndex = 57
+        Me.resolutionDescription_RichTextBox.Text = ""
         '
         'Label3
         '
@@ -139,7 +139,7 @@ Partial Class rtDialog
         Me.Controls.Add(Me.problemTicketNumberToResolve)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.dateLabel)
-        Me.Controls.Add(Me.createTicket_RichTextBox)
+        Me.Controls.Add(Me.resolutionDescription_RichTextBox)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.openTicketsDataGridView)
         Me.Controls.Add(Me.TableLayoutPanel2)
@@ -158,7 +158,7 @@ Partial Class rtDialog
     End Sub
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents dateLabel As System.Windows.Forms.Label
-    Friend WithEvents createTicket_RichTextBox As System.Windows.Forms.RichTextBox
+    Friend WithEvents resolutionDescription_RichTextBox As System.Windows.Forms.RichTextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents openTicketsDataGridView As System.Windows.Forms.DataGridView
     Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
