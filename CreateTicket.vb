@@ -180,6 +180,11 @@ Public Class CreateTicket
                 DB_connection_string.Close()
             End If
         End Try
+
+        'show a messagebox that request was sent with no error response from servery. Check data grid on main table to see if it worked. 
+        MessageBox.Show("Ticket Sent to database" + vbNewLine + "Check against table in main menu to verify integrity. ", "Ticket Sent", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Me.Close()
+        Form1.ShowDialog()
     End Sub
 
     Private Sub createTicketDataGridView_Click(sender As Object, e As EventArgs) Handles createTicketDataGridView.Click

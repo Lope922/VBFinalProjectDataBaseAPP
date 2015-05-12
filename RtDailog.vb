@@ -22,7 +22,7 @@ Public Class rtDialog
 
         'also only want to be able to edit through program. 
         openTicketsDataGridView.EditMode = DataGridViewEditMode.EditProgrammatically
-        'upon loading load the open tickets table into the resolved table. ' this may be tricky now working off of one table. May need to go back to two tables 
+        'upon loading load the open tickets table into the resolved table. 
 
         ' if i decide to go the combo box option to select the ticket to remove use this snippet just replace SQL request for what's needed
         ''Fetch names of tables and display them in first combobox
@@ -40,7 +40,7 @@ Public Class rtDialog
         problemTicketNumberToResolve.ValueMember = columnName
 
         ' dim select all Sql string that will make the request 
-        Dim selectAllOpenTechSupportTicketSQL As String = "SELECT * FROM TechSupportTicket"
+        Dim selectAllOpenTechSupportTicketSQL As String = "SELECT ticketID, techID, Problemdescription, datein, location, severity FROM TechSupportTicket  where dateout is null"
         Dim allDataFromTableDataAdapter As SqlDataAdapter
         Dim addDataFromTableDataTable As DataTable
 
