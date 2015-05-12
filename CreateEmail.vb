@@ -126,4 +126,12 @@ Public Class CreateEmail
             Send_Button.Enabled = True
         End If
     End Sub
+
+    Private Sub helpthisForm_Button1_Click(sender As Object, e As EventArgs) Handles helpthisForm_Button1.Click
+        If createEmail_help_RichTextBox1.Enabled = False Then
+            createEmail_help_RichTextBox1.Show()
+        Else
+            createEmail_help_RichTextBox1.Enabled = False
+        End If
+    End Sub
 End Class

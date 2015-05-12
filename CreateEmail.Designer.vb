@@ -30,6 +30,8 @@ Partial Class CreateEmail
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.Send_Button = New System.Windows.Forms.Button()
+        Me.createEmail_help_RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.helpthisForm_Button1 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -113,11 +115,36 @@ Partial Class CreateEmail
         Me.Send_Button.TabIndex = 0
         Me.Send_Button.Text = "Send"
         '
+        'createEmail_help_RichTextBox1
+        '
+        Me.createEmail_help_RichTextBox1.Enabled = False
+        Me.createEmail_help_RichTextBox1.Font = New System.Drawing.Font("Modern No. 20", 17.95!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.createEmail_help_RichTextBox1.Location = New System.Drawing.Point(22, 45)
+        Me.createEmail_help_RichTextBox1.Name = "createEmail_help_RichTextBox1"
+        Me.createEmail_help_RichTextBox1.Size = New System.Drawing.Size(401, 100)
+        Me.createEmail_help_RichTextBox1.TabIndex = 63
+        Me.createEmail_help_RichTextBox1.Text = "HERE is where you can generate e-mails  associated with the ticket nuber and work" & _
+    "er. Click view open tickets to get started. "
+        '
+        'helpthisForm_Button1
+        '
+        Me.helpthisForm_Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.helpthisForm_Button1.Font = New System.Drawing.Font("Magneto", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.helpthisForm_Button1.ForeColor = System.Drawing.Color.Yellow
+        Me.helpthisForm_Button1.Location = New System.Drawing.Point(396, 12)
+        Me.helpthisForm_Button1.Name = "helpthisForm_Button1"
+        Me.helpthisForm_Button1.Size = New System.Drawing.Size(27, 31)
+        Me.helpthisForm_Button1.TabIndex = 64
+        Me.helpthisForm_Button1.Text = "?"
+        Me.helpthisForm_Button1.UseVisualStyleBackColor = False
+        '
         'CreateEmail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(435, 175)
+        Me.Controls.Add(Me.createEmail_help_RichTextBox1)
+        Me.Controls.Add(Me.helpthisForm_Button1)
         Me.Controls.Add(Me.viewOpenTickets)
         Me.Controls.Add(Me.problemTicketToEmailComboBox)
         Me.Controls.Add(Me.Label2)
@@ -144,5 +171,7 @@ Partial Class CreateEmail
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button
     Friend WithEvents Send_Button As System.Windows.Forms.Button
+    Friend WithEvents createEmail_help_RichTextBox1 As System.Windows.Forms.RichTextBox
+    Friend WithEvents helpthisForm_Button1 As System.Windows.Forms.Button
 
 End Class

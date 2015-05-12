@@ -28,7 +28,7 @@ Public Class CreateTicket
     End Sub
 
     Private Sub Dialog1_Load(sender As Object, e As EventArgs) Handles Me.Load
-      
+        addProblemTicket.Enabled = False
         'set the choices for the user to select the problem location. 
         locationComboBox.Items.Add("Accounting")
         locationComboBox.Items.Add("IT Department")
@@ -189,5 +189,13 @@ Public Class CreateTicket
 
     Private Sub createTicketDataGridView_Click(sender As Object, e As EventArgs) Handles createTicketDataGridView.Click
         'TODO set this to refresh the data grid view on window click. 
+    End Sub
+
+    Private Sub locationComboBox_Click(sender As Object, e As EventArgs) Handles locationComboBox.Click
+        If locationComboBox.SelectedIndex > 1 Then
+            addProblemTicket.Enabled = True
+        Else
+            addProblemTicket.Enabled = False
+        End If
     End Sub
 End Class

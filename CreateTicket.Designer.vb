@@ -86,6 +86,7 @@ Partial Class CreateTicket
         '
         'locationComboBox
         '
+        Me.locationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.locationComboBox.FormattingEnabled = True
         Me.locationComboBox.Location = New System.Drawing.Point(51, 184)
         Me.locationComboBox.Name = "locationComboBox"
@@ -112,6 +113,7 @@ Partial Class CreateTicket
         '
         'assignedTechcomboBox
         '
+        Me.assignedTechcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.assignedTechcomboBox.FormattingEnabled = True
         Me.assignedTechcomboBox.Location = New System.Drawing.Point(51, 101)
         Me.assignedTechcomboBox.Name = "assignedTechcomboBox"
