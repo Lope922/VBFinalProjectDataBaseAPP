@@ -65,7 +65,7 @@ Public Class CreateTicket
 
         ' dim select all Sql string that will make the request 
         'TODO ANSWE QUESTION IS THIS CONSTANT CAN IT BE MOVED TO THE TOP. ?
-        Dim selectAllOpenTicketsSQL As String = "SELECT * FROM TechSupportTicket"
+        Dim selectAllOpenTicketsSQL As String = "SELECT ticketID,techID,Problemdescription,datein,location,severity FROM TechSupportTicket where dateout is null"
 
         Dim allDataFromTableDataAdapter As SqlDataAdapter
         'THIS DATA adapter allows communication of all_data from database
@@ -184,7 +184,7 @@ Public Class CreateTicket
         'show a messagebox that request was sent with no error response from servery. Check data grid on main table to see if it worked. 
         MessageBox.Show("Ticket Sent to database" + vbNewLine + "Check against table in main menu to verify integrity. ", "Ticket Sent", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Me.Close()
-        Form1.ShowDialog()
+        Form1.Show()
     End Sub
 
     Private Sub createTicketDataGridView_Click(sender As Object, e As EventArgs) Handles createTicketDataGridView.Click

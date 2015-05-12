@@ -35,7 +35,7 @@ Partial Class CreateEmail
         '
         'viewOpenTickets
         '
-        Me.viewOpenTickets.Location = New System.Drawing.Point(30, 127)
+        Me.viewOpenTickets.Location = New System.Drawing.Point(76, 130)
         Me.viewOpenTickets.Name = "viewOpenTickets"
         Me.viewOpenTickets.Size = New System.Drawing.Size(122, 23)
         Me.viewOpenTickets.TabIndex = 17

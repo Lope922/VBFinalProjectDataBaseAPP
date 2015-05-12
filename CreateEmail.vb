@@ -52,7 +52,8 @@ Public Class CreateEmail
     Private Sub viewOpenTickets_Click(sender As Object, e As EventArgs) Handles viewOpenTickets.Click
         'after the user has viewed the list of open ticket's they can select the technician to email and then e-mail them their open tickets. 
         problemTicketToEmailComboBox.Enabled = True
-
+        'todo  get the basics working here. 
+        ' this is the search string to display open tickets in the data grid. SELECT ticketID,techID,Problemdescription,datein,location,severity FROM TechSupportTicket where dateout is null"
         ' they should then be able to reference which technician to e-mail the problem ticket number. 
 
         ' maybe create some radio buttons to either e-mail selected ticket from data row table, and send just one ticket , 
@@ -60,6 +61,8 @@ Public Class CreateEmail
 
         Open_Ticket_Dialog_Window.Show()
 
+        'then user selects the ticket they want to e-mail to the user. 
+        'when this window is opened display the open tickets as well as the avilable techs. 
 
 
 

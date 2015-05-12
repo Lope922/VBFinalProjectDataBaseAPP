@@ -1,6 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Public Class Form1
 
+    'TODO FIX OPEN TICKETS QUERY ON MAINSCREEN. 
+
     'think about the objects that will be used throughout the program and start to divide up pieces needed into classes. 
 
     Dim testobjAdapter As SqlDataAdapter
