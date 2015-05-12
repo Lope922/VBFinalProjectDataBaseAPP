@@ -78,25 +78,11 @@ Public Class rtDialog
     End Sub
 
     Private Sub resolveProblemTicket_Click(sender As Object, e As EventArgs) Handles resolveProblemTicket.Click
-        'when this button is clicked get either the selected ticket from the selected item in the data grid view or ticket number and resolve that ticket. 
-        'easiest may be the selected row. 
-
-
-        'TO DO WORK ON THIS PART NEXT. RESOLVE A FRIGGIN TICKET
-        'Try USING THIS SNIPPET
-        '  Try
-        '   Dim row As DataGridViewRow = openTicketsDataGridView.SelectedRows.Item(0)
-
-        '' selected row is problem to solve. 
-        'just have the user enter a description of the resolution and then they will be able to resolve the ticket either through an update or insert SQL command
-
-        ''now how to get the database to know that this is the row that we want to edit 
         Dim ticketNum As Integer = CInt(problemTicketNumberToResolve.SelectedValue)
 
 
 
-
-        Dim SQLinsertResolveTicketCommand As String = "Insert into ResolvedTickets (ticketid,dateout,resolutiondescription) values ( @ticketID, @Dateout, @resolutionDescription)"
+        Dim SQLinsertResolveTicketCommand As String = "UPDATE techSupportTicket SET dateout = @DATEOUT, resolutiondescription = @resolutiondescription WHERE ticketid = @ticketid;"
 
         Dim SQLResolveTicketCommand As New SqlCommand(SQLinsertResolveTicketCommand, DB_connection_string)
 

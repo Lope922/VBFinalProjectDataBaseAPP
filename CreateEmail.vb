@@ -3,39 +3,20 @@ Imports System.Data.SqlClient
 
 Public Class CreateEmail
 
-    Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.DialogResult = System.Windows.Forms.DialogResult.OK
-        ' once the user clicks the send button use the problem ticket window to send propblem ticket from reference window that shows open tickets
-
-
-
-        'show the avialable tickets by problem ticket and ticket Number
-
-        MessageBox.Show("email sent")
-        Me.Close()
-    End Sub
-
+    Dim objTableDataAdapter As SqlDataAdapter
+    Dim objTechNamesDataTable As New DataTable()
+    Dim DB_connection_string As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
+    
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Close()
     End Sub
 
-    'TOMORROW THE TODO FOR THIS IS TO LOAD THE TEXT BOX AND POP UP WITH WINDOW TO SEE HOW TO SEND THE E=MAIL. 
-
-    ' when this button is clicked popup a window that shows the current open tickets. 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
+    Private Sub CreateEmail_Click(sender As Object, e As EventArgs) Handles Me.Click
 
     End Sub
 
 
-    Dim objTableDataAdapter As SqlDataAdapter
-
-
-
-    Dim objTechNamesDataTable As New DataTable()
-
-
-    Dim DB_connection_string As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
     Private Sub CreateEmail_Load(sender As Object, e As EventArgs) Handles Me.Load
 
 
@@ -59,13 +40,11 @@ Public Class CreateEmail
         techAvailableToeMailComboBox.DisplayMember = columnName
 
         techAvailableToeMailComboBox.ValueMember = columnName
+        '' ONCE THIS IS LOADED THE USER CAN PICK WHO THEY WOULD LIKE TO E-MAIL , WHICH SHOULD THEN LOAD THE AVAILBLE TICKET BY TICKET NUMBER. 
 
+        'for now the only failsafe to keep the user from messing things up is disableing the combobox
 
-
-
-        '' ONCE THIS IS LOADED THE USER CAN PICK WHO THEY WOULD LIKE TO E-MAIL , WHICH SHOULD THEN LOAD THE AVAILBLE TICKET BY TICCKET NUMBER. 
-
-
+        Send_Button.Enabled = False
 
 
     End Sub
@@ -112,5 +91,18 @@ Public Class CreateEmail
 
         'If you wanted to, this would be fairly easy to modify to email all technicians
         'Or, to change the selection mode to multiple rows and email selected technicians
+    End Sub
+
+    Private Sub Cancel_Button_Click_1(sender As Object, e As EventArgs) Handles Cancel_Button.Click
+        Me.Hide()
+        Form1.ShowDialog()
+    End Sub
+
+    Private Sub techAvailableToeMailComboBox_Click(sender As Object, e As EventArgs) Handles techAvailableToeMailComboBox.Click
+        If techAvailableToeMailComboBox.SelectedValue Is Nothing Then
+            Send_Button.Enabled = False
+        ElseIf techAvailableToeMailComboBox.SelectedIndex > 1 Then
+            Send_Button.Enabled = True
+        End If
     End Sub
 End Class
