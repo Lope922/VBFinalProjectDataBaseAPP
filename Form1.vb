@@ -59,7 +59,7 @@ Public Class Form1
 
         ' dim select all Sql string that will make the request 
         ' select everything from the ticket table 
-        Dim selectTicketSQL As String = "SELECT * FROM Tickets"
+        Dim selectTicketSQL As String = "SELECT * FROM TechSupportTicket"
 
         'testobjAdapter = New SqlDataAdapter(selectAllSQL, sqlConnectionSTring)
 

@@ -26,7 +26,7 @@ Public Class rtDialog
 
         ' if i decide to go the combo box option to select the ticket to remove use this snippet just replace SQL request for what's needed
         ''Fetch names of tables and display them in first combobox
-        objTableDataAdapter = New SqlDataAdapter("SELECT ticketID FROM Tickets", DB_connection_string)
+        objTableDataAdapter = New SqlDataAdapter("SELECT ticketID FROM TechSupportTicket", DB_connection_string)
         '' use the tech names data table to fill the obj table data adapter 
         objTableDataAdapter.Fill(objTechNamesDataTable)
 
@@ -40,13 +40,13 @@ Public Class rtDialog
         problemTicketNumberToResolve.ValueMember = columnName
 
         ' dim select all Sql string that will make the request 
-        Dim selectAllOpenTicketsSQL As String = "SELECT * FROM Tickets"
+        Dim selectAllOpenTechSupportTicketSQL As String = "SELECT * FROM TechSupportTicket"
         Dim allDataFromTableDataAdapter As SqlDataAdapter
         Dim addDataFromTableDataTable As DataTable
 
 
         ' now fill a grid box with the data. 
-        allDataFromTableDataAdapter = New SqlDataAdapter(selectAllOpenTicketsSQL, DB_connection_string)
+        allDataFromTableDataAdapter = New SqlDataAdapter(selectAllOpenTechSupportTicketSQL, DB_connection_string)
 
 
         '' EXACTLY WHAT I WANT TO DO RIGHT HERE./
@@ -61,7 +61,7 @@ Public Class rtDialog
         'Dim technameRowCount As Integer = objTechNamesDataTable.Rows.Count
         'Dim techName As String = objTableDataAdapter
 
-        Dim openTickets As String = "Select ticketID from Tickets"
+        Dim openTickets As String = "Select ticketID from TechSupportTicket"
         'Dim openTicketComboBoxDataAdapter As SqlDataAdapter
         Dim openTicketsdataTable As New DataTable()
 
@@ -73,7 +73,8 @@ Public Class rtDialog
         problemTicketNumberToResolve.DisplayMember = ticketColumnName
         problemTicketNumberToResolve.ValueMember = ticketColumnName
 
-
+        'trying to close this here because i was getting errors that might relate to this ? 
+        DB_connection_string.Close()
     End Sub
 
     Private Sub resolveProblemTicket_Click(sender As Object, e As EventArgs) Handles resolveProblemTicket.Click
@@ -84,90 +85,39 @@ Public Class rtDialog
         'TO DO WORK ON THIS PART NEXT. RESOLVE A FRIGGIN TICKET
         'Try USING THIS SNIPPET
         '  Try
-        Dim row As DataGridViewRow = openTicketsDataGridView.SelectedRows.Item(0)
+        '   Dim row As DataGridViewRow = openTicketsDataGridView.SelectedRows.Item(0)
 
         '' selected row is problem to solve. 
         'just have the user enter a description of the resolution and then they will be able to resolve the ticket either through an update or insert SQL command
 
         ''now how to get the database to know that this is the row that we want to edit 
+        Dim ticketNum As Integer = CInt(problemTicketNumberToResolve.SelectedValue)
 
-        Dim SQLinsertResolveTicketCommand As String = "Insert into ResolvedTickets values (@ticketID, @Dateout, @resolutionDescription)"
+
+
+
+        Dim SQLinsertResolveTicketCommand As String = "Insert into ResolvedTickets (ticketid,dateout,resolutiondescription) values ( @ticketID, @Dateout, @resolutionDescription)"
 
         Dim SQLResolveTicketCommand As New SqlCommand(SQLinsertResolveTicketCommand, DB_connection_string)
 
-        SQLResolveTicketCommand.Parameters.AddWithValue("@ticketid", problemTicketNumberToResolve.SelectedValue)
+        SQLResolveTicketCommand.Parameters.AddWithValue("@ticketID", ticketNum)
+
         SQLResolveTicketCommand.Parameters.AddWithValue("@Dateout", Date.Now)
+
         SQLResolveTicketCommand.Parameters.AddWithValue("@resolutionDescription", resolutionDescription_RichTextBox.Text)
 
         Try
             DB_connection_string.Open()
             SQLResolveTicketCommand.ExecuteNonQuery()
+
             DB_connection_string.Close()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message + "Look into this error if throw and try to write meaning ful catch phrases" + vbNewLine + ":)", "Fix Me", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
 
-        'insert the primaryticketId number this was i can possibly merget the two. 
-
-
-
-
-        'see if i can extract the ticket number from the click of the button or user selection. 
-
-
-        ' insert into the database the problem you solved. 
-        ' so use the selected row as the row to insert. 
-
-        'INSERT INTO table2
-        '(column_name(s))
-        'Select column_name(s)
-        'FROM table1;
-
-        MessageBox.Show("here is the row you selected to edit" + row.ToString)
-        'how does the database want the row to be sent in ? that is the big question 
-
-        'start to establish a connection with the database to update the table. 
-
-        'this is the connection string i want to use
-        Dim sqlConnectionString As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
-
-        'now to send it into database table 
-
-        'TODO FIGURE OUT HOW TO WRITE THIS COMMAND 
-        'TRYING TO WRITE THE DATA INTO THE RESOLVED TICKEST. iF I CAN'T GET IT TO WORK THEN I SHOULD JUST UPDATE THE OPEN TICKETS BY ADDING AS RESOLVED TICKET DATE, AND DESCRIIPTION
-        'Dim resolveTicketSQLcommand As SqlCommand("INSERT INTO ResolvedTickets VALUES (@Tech_ID, @Problem_Ticket_Number, @Description, @Date_called_in,@location, @severity)"
-
-
-        ''tech id , problem ticket number, description, date called in, location of problem, severity
-
-        'Dim insertProblemticketSqlCommand As New SqlCommand(sqlinsertTicketCommand, DB_connection_string)
-
-        'insertProblemticketSqlCommand.Parameters.AddWithValue("@Tech_ID", techtoAssignTask)
-        'insertProblemticketSqlCommand.Parameters.AddWithValue("@Problem_Ticket_Number", 2)
-        'insertProblemticketSqlCommand.Parameters.AddWithValue("@Description", problemDescription)
-        'insertProblemticketSqlCommand.Parameters.AddWithValue("@Date_called_in", dateCalledIn)
-        'insertProblemticketSqlCommand.Parameters.AddWithValue("@location", problemLocation)
-        'insertProblemticketSqlCommand.Parameters.AddWithValue("@severity", problemSeverity)
-
-        Try
-            DB_connection_string.Open()
-            'insertProblemticketSqlCommand.ExecuteNonQuery()
-            DB_connection_string.Close()
-            'create a request to the database to send the above information 
-
-
-            'create a lable to show today's date. That will be helpful. 
-            'TODO AFTER THIS IS WORKING ALLOW USER TO SET DATE IN AND DATE RESOLVED. AS AN EXTRA FEATURE:
-
-        Catch similarErr As Exception
-            MessageBox.Show(similarErr.Message + vbNewLine + " I have experienced a similar error " + vbNewLine + " within the sqlcreateticketcommand. Checker the sql queries is setup corretly")
-        End Try
-        'NOT FUNCTIONING YET 
-
-
-        'LEFT OF REVIEWING COFFEE SHOP EXAMPLE SAVE BUTTON. 
-        MessageBox.Show("Ticket sent to Database" + vbNewLine + "Check Database table to see updated content", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.None)
+        'TODO AFTER THIS IS WORKING ALLOW USER TO SET DATE IN AND DATE RESOLVED. AS AN EXTRA FEATURE:
+        '    MessageBox.Show("Ticket sent to Database" + vbNewLine + "Check Database table to see updated content", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.None)
     End Sub
 
 

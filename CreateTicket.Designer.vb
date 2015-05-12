@@ -137,6 +137,7 @@ Partial Class CreateTicket
         '
         'severityNumericUpDown
         '
+        Me.severityNumericUpDown.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.severityNumericUpDown.Location = New System.Drawing.Point(147, 57)
         Me.severityNumericUpDown.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.severityNumericUpDown.Name = "severityNumericUpDown"
