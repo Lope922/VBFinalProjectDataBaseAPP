@@ -44,6 +44,7 @@ Partial Class CreateEmail
         '
         'problemTicketToEmailComboBox
         '
+        Me.problemTicketToEmailComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.problemTicketToEmailComboBox.FormattingEnabled = True
         Me.problemTicketToEmailComboBox.Location = New System.Drawing.Point(139, 65)
         Me.problemTicketToEmailComboBox.Name = "problemTicketToEmailComboBox"
@@ -61,7 +62,7 @@ Partial Class CreateEmail
         '
         'techAvailableToeMailComboBox
         '
-        Me.techAvailableToeMailComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.techAvailableToeMailComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.techAvailableToeMailComboBox.FormattingEnabled = True
         Me.techAvailableToeMailComboBox.Items.AddRange(New Object() {"--"})
         Me.techAvailableToeMailComboBox.Location = New System.Drawing.Point(139, 18)

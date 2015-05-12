@@ -22,6 +22,7 @@ Partial Class rtDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(rtDialog))
         Me.Label5 = New System.Windows.Forms.Label()
         Me.dateLabel = New System.Windows.Forms.Label()
         Me.resolutionDescription_RichTextBox = New System.Windows.Forms.RichTextBox()
@@ -32,8 +33,12 @@ Partial Class rtDialog
         Me.resolveProblemTicket = New System.Windows.Forms.Button()
         Me.problemTicketNumberToResolve = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.helpthisForm_Button1 = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.rT_help_RichTextBox1 = New System.Windows.Forms.RichTextBox()
         CType(Me.openTicketsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label5
@@ -130,11 +135,44 @@ Partial Class rtDialog
         Me.Label1.TabIndex = 61
         Me.Label1.Text = "Select Ticket to resolve from combo box"
         '
+        'helpthisForm_Button1
+        '
+        Me.helpthisForm_Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.helpthisForm_Button1.Font = New System.Drawing.Font("Magneto", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.helpthisForm_Button1.ForeColor = System.Drawing.Color.Yellow
+        Me.helpthisForm_Button1.Location = New System.Drawing.Point(732, 12)
+        Me.helpthisForm_Button1.Name = "helpthisForm_Button1"
+        Me.helpthisForm_Button1.Size = New System.Drawing.Size(27, 31)
+        Me.helpthisForm_Button1.TabIndex = 62
+        Me.helpthisForm_Button1.Text = "?"
+        Me.helpthisForm_Button1.UseVisualStyleBackColor = False
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.rT_help_RichTextBox1)
+        Me.Panel1.Location = New System.Drawing.Point(61, 30)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(687, 223)
+        Me.Panel1.TabIndex = 63
+        '
+        'rT_help_RichTextBox1
+        '
+        Me.rT_help_RichTextBox1.Enabled = False
+        Me.rT_help_RichTextBox1.Font = New System.Drawing.Font("Modern No. 20", 15.7!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rT_help_RichTextBox1.Location = New System.Drawing.Point(3, 3)
+        Me.rT_help_RichTextBox1.Name = "rT_help_RichTextBox1"
+        Me.rT_help_RichTextBox1.Size = New System.Drawing.Size(681, 215)
+        Me.rT_help_RichTextBox1.TabIndex = 0
+        Me.rT_help_RichTextBox1.Text = resources.GetString("rT_help_RichTextBox1.Text")
+        Me.rT_help_RichTextBox1.ZoomFactor = 1.5!
+        '
         'rtDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(788, 300)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.helpthisForm_Button1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.problemTicketNumberToResolve)
         Me.Controls.Add(Me.Label5)
@@ -152,6 +190,7 @@ Partial Class rtDialog
         Me.Text = "Resolve Open Ticket"
         CType(Me.openTicketsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -166,5 +205,8 @@ Partial Class rtDialog
     Friend WithEvents resolveProblemTicket As System.Windows.Forms.Button
     Friend WithEvents problemTicketNumberToResolve As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents helpthisForm_Button1 As System.Windows.Forms.Button
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents rT_help_RichTextBox1 As System.Windows.Forms.RichTextBox
 
 End Class

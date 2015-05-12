@@ -14,6 +14,8 @@ Public Class Form1
     Private Sub helpButton_Click(sender As Object, e As EventArgs) Handles programhelpButton.Click
         ' open a dialog window to show the user how to use the main menu and program.
 
+        MessageBox.Show("Enter a username to unlock abilities")
+
 
     End Sub
 
@@ -61,7 +63,7 @@ Public Class Form1
 
         ' dim select all Sql string that will make the request 
         ' select everything from the ticket table 
-        Dim selectTicketSQL As String = "SELECT * FROM TechSupportTicket"
+        Dim selectTicketSQL As String = "SELECT ticketID,techID,Problemdescription,datein,location,severity FROM TechSupportTicket where dateout is null"
 
         'testobjAdapter = New SqlDataAdapter(selectAllSQL, sqlConnectionSTring)
 

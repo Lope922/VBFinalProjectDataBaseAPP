@@ -113,4 +113,13 @@ Public Class rtDialog
 
 
 
+    Private Sub helpthisForm_Button1_Click(sender As Object, e As EventArgs) Handles helpthisForm_Button1.Click
+        Panel1.Hide()
+        If Panel1.Enabled = False Then
+            Panel1.Show()
+        ElseIf Panel1.Enabled = True Then
+            Panel1.Hide()
+        End If
+
+    End Sub
 End Class

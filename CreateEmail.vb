@@ -3,10 +3,11 @@ Imports System.Data.SqlClient
 
 Public Class CreateEmail
 
+
     Dim objTableDataAdapter As SqlDataAdapter
     Dim objTechNamesDataTable As New DataTable()
     Dim DB_connection_string As New SqlConnection("server=LOPE_S_PC\MCTCSQLSTUDENT;database=FinalDatabaseProject;Trusted_Connection=yes")
-    
+
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Close()
@@ -28,18 +29,20 @@ Public Class CreateEmail
 
         'LOAD THE AVAILABLE TECHS TO E-MAIL FROM THE TECHLIST. 
         'Fetch names of tables and display them in first combobox
-        objTableDataAdapter = New SqlDataAdapter("SELECT [Tech name] FROM TechList", DB_connection_string)
+        ' objTableDataAdapter = New SqlDataAdapter("SELECT [Tech name] FROM TechList where dateout is null", DB_connection_string)
+        objTableDataAdapter = New SqlDataAdapter("SELECT techid FROM techsupportticket where dateout is null", DB_connection_string)
         ' use the tech names data table to fill the obj table data adapter 
         objTableDataAdapter.Fill(objTechNamesDataTable)
 
         'the data source for the combo box is the available techs in the database. 
         techAvailableToeMailComboBox.DataSource = objTechNamesDataTable
 
-        Dim columnName As String = "Tech Name"
+        Dim columnName As String = "Techid"
 
         techAvailableToeMailComboBox.DisplayMember = columnName
 
         techAvailableToeMailComboBox.ValueMember = columnName
+
         '' ONCE THIS IS LOADED THE USER CAN PICK WHO THEY WOULD LIKE TO E-MAIL , WHICH SHOULD THEN LOAD THE AVAILBLE TICKET BY TICKET NUMBER. 
 
         'for now the only failsafe to keep the user from messing things up is disableing the combobox
@@ -63,6 +66,21 @@ Public Class CreateEmail
 
         'then user selects the ticket they want to e-mail to the user. 
         'when this window is opened display the open tickets as well as the avilable techs. 
+        'Fetch names of tables and display them in first combobox using a new objTableDataAdapter
+        objTableDataAdapter = New SqlDataAdapter("SELECt ticketID FROm TechSupportTicket where dateout is null", DB_connection_string)
+
+        ' use the tech names data table to fill the obj table data adapter 
+        objTableDataAdapter.Fill(objTechNamesDataTable)
+
+        'the data source for the combo box is the available techs in the database. 
+        problemTicketToEmailComboBox.DataSource = objTechNamesDataTable
+
+        'use this search string to select the tech name column to be displayed in the combo box. 
+        Dim columnName As String = "TicketID"
+        'this assigns the value within the column into the member displayed in the data table 
+        problemTicketToEmailComboBox.DisplayMember = columnName
+        problemTicketToEmailComboBox.ValueMember = columnName
+
 
 
 
